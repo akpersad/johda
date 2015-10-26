@@ -99,6 +99,10 @@ class Menu
 		#options[0][0] the second 0 refers to each item in a submenu
 		#options[0][0][0] the third 0 refers to the group 
 		#options[0][0][0][0] the last 0 refers to the option in that group
+		build_catagories
+		build_items_for_each_catagory
+		build_groups_for_each_item
+		build_options_for_each_group
 	end
 
 
@@ -109,9 +113,5 @@ class Menu
 
 end
 
-x = Menu.new
-x.build_catagories
-x.build_items_for_each_catagory
-x.build_groups_for_each_item
-x.build_options_for_each_group
-binding.pry
+
+
