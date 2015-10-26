@@ -1,5 +1,19 @@
-<h1>List of Restaurant</h1>	
-<% @restaurant_name.each do |k,v| %>
-	<%= k %>:
-	<%= v %><br><br/>
-<% end %>
+<center>
+	<h1>List of Restaurant</h1>	<br>
+	<% @results.name.each_with_index do |e1,i1| %>
+		<% @results.address.each_with_index do |e2,i2| %>
+			<% @results.is_it_open?.each_with_index do |e3,i3| %>
+				<% until%>
+				<% if i1 == i2 && i2 == i3%>
+					<%= e1 %>
+					<%= e2 %><br>
+					<% if e3%>
+						Currently Open<br><br>
+					<% else %>
+						CLOSED<br><br>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+</center>

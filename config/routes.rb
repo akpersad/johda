@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  root to: 'johda#main'
+  root to: 'johda#search'
+
+  post 'johda/main'
+
+  # post 'johda/search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

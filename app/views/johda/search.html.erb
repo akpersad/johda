@@ -1,0 +1,8 @@
+<center>
+	<%=form_tag("johda/main") do %>
+		Search Address:
+		<%= text_field_tag("address") %>
+		<%= submit_tag "search" %>
+	<% end %>
+	<%= flash[:success].html_safe unless flash[:success].blank? %><br>
+</center>
