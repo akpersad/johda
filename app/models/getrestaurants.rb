@@ -13,29 +13,18 @@ class	Getrestaurants
 	end
 
 	def displaying
-		@list2 = Array.new
+		@open_rest = Array.new
 		@list["merchants"].each do |x|
 			if x["ordering"]["is_open"] == true
-				@list2 << x
+				@open_rest << x
 			end
 		end
-	end
-
-	def restaurants
-		@restaurants = {}
-		@info = []
-		if !@list["merchants"].nil?
-			@list["merchants"].each do |e|
-				@restaurants[e["ordering"]["is_open"]] = @info
-			end
-		end
-		@restaurants
 	end
 
 	def merchant_id
 		merchant_id = Array.new
-		if !@list2.nil?
-			@list2.each do |id|
+		if !@open_rest.nil?
+			@open_rest.each do |id|
 				merchant_id << id["id"]
 			end
 		end
@@ -44,8 +33,8 @@ class	Getrestaurants
 
 	def name
 		@restaurants = Array.new
-		if !@list2.nil?
-			@list2.each do |restaurant|
+		if !@open_rest.nil?
+			@open_rest.each do |restaurant|
 				@restaurants << restaurant["summary"]["name"]
 			end
 		end
@@ -54,8 +43,8 @@ class	Getrestaurants
 
 	def address
 		@addresses = Array.new
-		if !@list2.nil?
-			@list2.each do |address|
+		if !@open_rest.nil?
+			@open_rest.each do |address|
 				@addresses.push([
 				address["location"]["street"].titleize, 
 				address["location"]["city"].capitalize, 
@@ -68,8 +57,8 @@ class	Getrestaurants
 
 	def latlong
 		@latlong = Array.new
-		if !@list2.nil?
-			@list2.each do |lat|
+		if !@open_rest.nil?
+			@open_rest.each do |lat|
 				@latlong.push([lat["location"]["latitude"], lat["location"]["longitude"]])
 			end
 		end
@@ -78,8 +67,8 @@ class	Getrestaurants
 
 	def is_it_open?
 		@open = Array.new
-		if !@list2.nil?
-			@list2.each do |boolean|
+		if !@open_rest.nil?
+			@open_rest.each do |boolean|
 				@open << boolean["ordering"]["is_open"]
 			end
 		end
@@ -88,8 +77,8 @@ class	Getrestaurants
 
 	def last_or_next_order_time
 		@last_or_next_order_time = Array.new
-		if !@list2.nil?
-			@list2.each do |time|
+		if !@open_rest.nil?
+			@open_rest.each do |time|
 				@last_or_next_order_time << time["ordering"]["last_or_next_order_time"]
 			end
 		end
@@ -98,8 +87,8 @@ class	Getrestaurants
 
 	def delivery_charge
 		@delivery_charge = Array.new
-		if !@list2.nil?
-			@list2.each do |x|
+		if !@open_rest.nil?
+			@open_rest.each do |x|
 				if x["ordering"]["delivery_charge"] == 0
 					 @delivery_charge << x["ordering"]["delivery_percent"]
 				else
@@ -112,8 +101,8 @@ class	Getrestaurants
 
 	def cuisine
 		@cuisines = Array.new
-		if !@list2.nil?
-			@list2.each do |x|
+		if !@open_rest.nil?
+			@open_rest.each do |x|
 				@cuisines << (x["summary"]["cuisines"])
 			end
 		end
@@ -122,8 +111,8 @@ class	Getrestaurants
 
 	def rating
 		@rating = Array.new
-		if !@list2.nil?
-			@list2.each do |x|
+		if !@open_rest.nil?
+			@open_rest.each do |x|
 				@rating << x["summary"]["star_ratings"]
 			end
 		end
@@ -132,8 +121,8 @@ class	Getrestaurants
 
 	def phonenumber
 		@phone_number = Array.new
-		if !@list2.nil?
-			@list2.each do |x|
+		if !@open_rest.nil?
+			@open_rest.each do |x|
 				@phone_number << x["summary"]["phone"]
 			end
 		end
@@ -142,8 +131,8 @@ class	Getrestaurants
 
 	def merchant_logo
 		@logo = Array.new
-		if !@list2.nil?
-			@list2.each do |x|
+		if !@open_rest.nil?
+			@open_rest.each do |x|
 				@logo << x["summary"]["merchant_logo"]
 			end
 		end
@@ -152,8 +141,8 @@ class	Getrestaurants
 
 	def min_order
 		@min_order = Array.new
-		if !@list2.nil?
-			@list2.each do |x|
+		if !@open_rest.nil?
+			@open_rest.each do |x|
 				@min_order << x["ordering"]["minimum"]
 			end
 		end

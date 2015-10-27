@@ -1,18 +1,19 @@
 <center>
 	<h1>List of Restaurant</h1>	<br>
-	<% counter = 0 %>
 	<% @results.name.each_with_index do |e1,i1| %>
 		<% @results.address.each_with_index do |e2,i2| %>
 			<% @results.cuisine.each_with_index do |e3,i3| %>
-				<% if i1 == i2 && i2 == i3%>
-					<div id="<%= counter %>">
-						<strong><%= e1 %></strong><br>
-						<%= e2 %><br>
-						<i><%= e3.join(", ") %></i><br><br>
-						<% counter += 1 %>
-					</div>
+				<% @results.merchant_id.each_with_index do |e4, i4| %>
+					<% if i1 == i2 && i2 == i3 && i3 == i4 %>
+						<div id="<%= e4 %>">
+							<strong><%= e1 %></strong><br>
+							<%= e2 %><br>
+							<i><%= e3.join(", ") %></i><br><br>
+						</div>
+					<% end %>
 				<% end %>
 			<% end %>
 		<% end %>
+		<% break if i1 == 9 %>
 	<% end %>
 </center>
