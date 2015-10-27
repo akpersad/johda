@@ -5,11 +5,15 @@
 			<% @results.cuisine.each_with_index do |e3,i3| %>
 				<% @results.merchant_id.each_with_index do |e4, i4| %>
 					<% if i1 == i2 && i2 == i3 && i3 == i4 %>
-						<div id="<%= e4 %>">
-							<strong><%= e1 %></strong><br>
-							<%= e2 %><br>
-							<i><%= e3.join(", ") %></i><br><br>
-						</div>
+						<%= form_tag("../menus/index") do %>
+							<div id="<%= e4 %>">
+								<strong><%= e1 %></strong><br>
+								<%= e2 %><br>
+								<i><%= e3.join(", ") %></i><br>
+								<%= text_field_tag("#{e4}")%>
+								<%= submit_tag "menu" %><br><br>
+							</div>
+						<% end %>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -17,3 +21,10 @@
 		<% break if i1 == 9 %>
 	<% end %>
 </center>
+
+
+<script>
+	$( document ).ready(function() {
+    $("[type='text']").hide()
+});
+</script>

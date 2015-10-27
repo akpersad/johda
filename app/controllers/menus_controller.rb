@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
 
   def index
-    @menu = Menu.new
+    @menu = Menu.new(params.key("").to_i)
     @menu.runner
     
     
