@@ -2,17 +2,14 @@
 	<h1>List of Restaurant</h1>	<br>
 	<% @results.name.each_with_index do |e1,i1| %>
 		<% @results.address.each_with_index do |e2,i2| %>
-			<% @results.is_it_open?.each_with_index do |e3,i3| %>
+			<% @results.cuisine.each_with_index do |e3,i3| %>
 				<% if i1 == i2 && i2 == i3%>
 					<strong><%= e1 %></strong><br>
 					<%= e2 %><br>
-					<% if e3%>
-						Currently Open<br><br>
-					<% else %>
-						CLOSED<br><br>
-					<% end %>
+					<i><%= e3.join(", ") %></i><br><br>
 				<% end %>
 			<% end %>
 		<% end %>
+		<% break if i1 == 7 %>
 	<% end %>
 </center>
