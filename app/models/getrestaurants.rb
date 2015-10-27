@@ -9,6 +9,17 @@ class	Getrestaurants
 		@list = @client.search "#{@address}"
 	end
 
+	def restaurants
+		@restaurants = {}
+		@info = []
+		if !@list["merchants"].nil?
+			@list["merchants"].each do |e|
+				@restaurants[e["ordering"]["is_open"]] = @info
+			end
+		end
+		@restaurants
+	end
+
 	def merchant_id
 		merchant_id = Array.new
 		if !@list["merchants"].nil?
