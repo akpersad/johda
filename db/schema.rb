@@ -11,4 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20151026184342) do
 
+  create_table "restaurants", force: :cascade do |t|
+    t.integer  "merchant_id"
+    t.string   "name"
+    t.string   "address"
+    t.float    "lat"
+    t.float    "long"
+    t.boolean  "is_it_open"
+    t.time     "last_or_next_order_time"
+    t.float    "delivery_charge"
+    t.string   "cuisine"
+    t.integer  "phonenumber",             limit: 5
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+end
