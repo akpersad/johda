@@ -31,10 +31,6 @@ gem 'omniauth'
 gem 'omniauth-delivery-food'
 gem 'omniauth-twitter'
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 38662b3a633894c6025c03ac772ebb2e38dbe7c9
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
