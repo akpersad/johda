@@ -65,16 +65,6 @@ class	Getrestaurants
 		@latlong
 	end
 
-	def is_it_open?
-		@open = Array.new
-		if !@open_rest.nil?
-			@open_rest.each do |boolean|
-				@open << boolean["ordering"]["is_open"]
-			end
-		end
-		@open
-	end
-
 	def last_or_next_order_time
 		@last_or_next_order_time = Array.new
 		if !@open_rest.nil?
