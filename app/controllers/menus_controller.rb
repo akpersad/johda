@@ -5,8 +5,8 @@ class MenusController < ApplicationController
     @menu.runner
     
     
-    render('index')
-    
+    render "index"
+
   end
 
 end

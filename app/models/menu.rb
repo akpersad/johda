@@ -103,14 +103,9 @@ class Menu
 		build_items_for_each_catagory
 		build_groups_for_each_item
 		build_options_for_each_group
+
+		
 	end
-
-
-
-
-
-	
-
 end
 
 

@@ -1,0 +1,19 @@
+from menu
+
+<% @menu.catagories.each_with_index do |catagory,x| %>
+	<%= render partial: 'catagory', locals: {title: catagory} %>
+		<% @menu.items[x].each_with_index do |item,y| %>	
+			<%= render partial: 'item', locals: {item: item} %>  
+				<% @menu.groups[x][y].each_with_index do |group,z| %>
+					<%= render partial: 'group', locals: {group: group} %>
+						<% if group.class != String%>
+							<% @menu.options[x][y][z].each_with_index do |option| %>
+								<%= render partial: 'option', locals: {option: option} %>
+							<% end %>
+						<%end%>
+				<%end%>
+		<%end%>
+<% end %>
+
+
+
