@@ -24,6 +24,8 @@ gem 'json'
 #delivery api gem
 gem 'delivery'
 
+# pagination
+gem 'will_paginate'
 
 #User
 gem 'devise'

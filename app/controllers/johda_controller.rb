@@ -4,6 +4,7 @@ class JohdaController < ApplicationController
 	end
 
 	def main
+		@rest = Getrestaurants.paginate(:page => params[:page], :per_page => 5)
 		@input = params['address']
 		@results = Getrestaurants.new(@input)
 		if @results.name == []
