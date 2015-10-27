@@ -1,0 +1,10 @@
+<br>
+<% if group.class != String %>
+	<strong><%= group['name'] %></strong>
+	<%= group['min_selection'] %>
+	
+	<%= group['max_selection'] %>
+<% else %>
+	<%='no additional options' %>
+<%end%>
+<br>
