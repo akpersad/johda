@@ -1,22 +1,24 @@
 
-
 <% @menu.catagories.each_with_index do |catagory,x| %>
 
 	<div class ='cat' id='cat <%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
 		<% @menu.items[x].each_with_index do |item,y| %>	
 
-			<div id='cat <%=x%> item <%=y%>'> <%= render partial: 'item', locals: {item: item} %>
+			<div id='cat <%=x%> item <%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div>
+
 
 				<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-					<div id='cat <%=x%> item <%=y%> group <%=z%>'> <%= render partial: 'group', locals: {group: group} %>
+					<div id='cat <%=x%> item <%=y%> group <%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div>
+
 
 						<% if group.class != String%>
 
 							<% @menu.options[x][y][z].each_with_index do |option,d| %>
 
-								<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= render partial: 'option', locals: {option: option} %>
+								<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= render partial: 'option', locals: {option: option} %> </div>
+
 
 							<% end %>
 						<%end%>
