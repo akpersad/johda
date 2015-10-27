@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   get   '/login', :to => 'sessions#new', :as => :login
   
-  get '/auth/:provider/callback', :to => 'sessions#create'
+  get '/auth/:provider/callback/', :to => 'sessions#create'
   
   get '/auth/failure', :to => 'sessions#failure'
   # You can have the root of your site routed with "root"

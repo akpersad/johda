@@ -3,9 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
+   raise :test
    @user = User.find_or_create_from_auth_hash(auth_hash)
     self.current_user = @user
-    redirect_to root_path
+    redirect_to '/'
   end
 
   def auth_hash
