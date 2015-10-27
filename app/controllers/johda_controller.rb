@@ -4,7 +4,12 @@ class JohdaController < ApplicationController
 	end
 
 	def main
-		@input = params['address']
+		if !params['address'].nil?
+			session['last_search'] = params['address']
+		end
+
+		# @input = params['address']
+		@input = session['last_search']
 		@results = Getrestaurants.new(@input)
 		# @results.page(1).per(10).padding(3)
 		if @results.name == []

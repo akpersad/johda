@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'johda#search'
 
   post 'johda/main'
+  get '/johda/main'
   post 'menus/index'
 
   # post 'johda/search'
