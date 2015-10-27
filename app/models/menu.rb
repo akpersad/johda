@@ -3,6 +3,7 @@ require 'pry'
 
 class Menu 
 
+
 	attr_reader :entire_menu, :catagories, :items, :groups, :options
 	#63183 63341
 	def initialize(restID = 63341)
@@ -70,9 +71,11 @@ class Menu
 						group_options << ["This Item Has No Group For Options"]
 					else
 						group['children'].each do |option|
+
 							group_options << {'name' => option["name"],
 							"description" => option["description"],
-							"max_price" => option["max_price"]}
+
+							"max_price" => notnill(option,'max_price')}
 						end
 					end
 					item_group << group_options
@@ -80,6 +83,15 @@ class Menu
 				option_container << item_group
 			end
 			options << option_container
+		end
+		
+	end
+
+	def notnill(hash,value)
+		if hash[value]
+			return hash[value]
+		else
+			return 0
 		end
 		
 	end
@@ -103,6 +115,7 @@ class Menu
 		build_items_for_each_catagory
 		build_groups_for_each_item
 		build_options_for_each_group
+
 
 		
 	end

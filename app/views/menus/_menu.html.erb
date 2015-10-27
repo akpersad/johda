@@ -16,9 +16,11 @@
 						<% if group.class != String%>
 
 							<% @menu.options[x][y][z].each_with_index do |option,d| %>
-
-								<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= render partial: 'option', locals: {option: option} %> </div>
-
+								<%if option.class == Hash%>
+									<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= render partial: 'option', locals: {option: option} %> </div>
+								<%else%>
+									<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= option[0] %></div>
+								<%end%>
 
 							<% end %>
 						<%end%>
