@@ -1,14 +1,18 @@
 <center>
-	<h1>List of Restaurant</h1>	<br>
+<h1>List of Restaurant</h1>	<br>
+ <%= form_tag("../menus/index") do %>
 		<% @page.each do |e| %>
+			<div id="<%= e.merchant_id %>">
 				<strong><%= e.name %></strong><br>
 				<%= e.address %><br>
 				<%= e.phone_number %><br>
-				<%= e.cuisine[1...-1] %><br><br>
-	<% end%>
-
-
-	<%=paginate @page%>
+				<%= e.cuisine[1...-1] %><br>
+				<%= text_field_tag("#{e.merchant_id}")%>
+				<%= submit_tag "menu" %><br><br>
+			</div>
+		<% end%>
+	<% end %>
+<%=paginate @page%>
 </center>
 
 
