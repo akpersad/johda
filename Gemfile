@@ -24,6 +24,9 @@ gem 'json'
 #delivery api gem
 gem 'delivery'
 
+# pagination
+gem 'kaminari'
+
 
 #User
 gem 'devise'
