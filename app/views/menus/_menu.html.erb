@@ -1,32 +1,33 @@
+<div class='menu'>
+	<% @menu.catagories.each_with_index do |catagory,x| %>
 
-<% @menu.catagories.each_with_index do |catagory,x| %>
+		<div class ='cat' id='cat <%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
-	<div class ='cat' id='cat <%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
+			<% @menu.items[x].each_with_index do |item,y| %>	
 
-		<% @menu.items[x].each_with_index do |item,y| %>	
-
-			<div id='cat <%=x%> item <%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div>
-
-
-				<% @menu.groups[x][y].each_with_index do |group,z| %>
-
-					<div id='cat <%=x%> item <%=y%> group <%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div>
+				<div id='cat <%=x%> item <%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div>
 
 
-						<% if group.class != String%>
+					<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-							<% @menu.options[x][y][z].each_with_index do |option,d| %>
-								<%if option.class == Hash%>
-									<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= render partial: 'option', locals: {option: option} %> </div>
-								<%else%>
-									<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= option[0] %></div>
-								<%end%>
+						<div id='cat <%=x%> item <%=y%> group <%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div>
 
-							<% end %>
-						<%end%>
-				<%end%>
-		<%end%>
-<% end %>
+
+							<% if group.class != String%>
+
+								<% @menu.options[x][y][z].each_with_index do |option,d| %>
+									<%if option.class == Hash%>
+										<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= render partial: 'option', locals: {option: option} %> </div>
+									<%else%>
+										<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>'> <%= option[0] %></div>
+									<%end%>
+
+								<% end %>
+							<%end%>
+					<%end%>
+			<%end%>
+	<% end %>
+</div>
 
 
 
