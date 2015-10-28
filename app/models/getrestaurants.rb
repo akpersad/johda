@@ -15,7 +15,7 @@ class	Getrestaurants
 	def displaying
 		@open_rest = Array.new
 		@list["merchants"].each do |x|
-			if x["ordering"]["is_open"] == true
+			if x["ordering"]["is_open"] == true && !x["summary"]["cuisines"].nil?
 				@open_rest << x
 			end
 		end
@@ -55,25 +55,25 @@ class	Getrestaurants
 		@addresses
 	end
 
-	def latlong
-		@latlong = Array.new
-		if !@open_rest.nil?
-			@open_rest.each do |lat|
-				@latlong.push([lat["location"]["latitude"], lat["location"]["longitude"]])
-			end
-		end
-		@latlong
-	end
+	# def latlong
+	# 	@latlong = Array.new
+	# 	if !@open_rest.nil?
+	# 		@open_rest.each do |lat|
+	# 			@latlong.push([lat["location"]["latitude"], lat["location"]["longitude"]])
+	# 		end
+	# 	end
+	# 	@latlong
+	# end
 
-	def last_or_next_order_time
-		@last_or_next_order_time = Array.new
-		if !@open_rest.nil?
-			@open_rest.each do |time|
-				@last_or_next_order_time << time["ordering"]["last_or_next_order_time"]
-			end
-		end
-		@last_or_next_order_time
-	end
+	# def last_or_next_order_time
+	# 	@last_or_next_order_time = Array.new
+	# 	if !@open_rest.nil?
+	# 		@open_rest.each do |time|
+	# 			@last_or_next_order_time << time["ordering"]["last_or_next_order_time"]
+	# 		end
+	# 	end
+	# 	@last_or_next_order_time
+	# end
 
 	def delivery_charge
 		@delivery_charge = Array.new
@@ -96,18 +96,18 @@ class	Getrestaurants
 				@cuisines << (x["summary"]["cuisines"])
 			end
 		end
-		@cuisines.compact!
+		@cuisines
 	end
 
-	def rating
-		@rating = Array.new
-		if !@open_rest.nil?
-			@open_rest.each do |x|
-				@rating << x["summary"]["star_ratings"]
-			end
-		end
-		@rating
-	end
+	# def rating
+	# 	@rating = Array.new
+	# 	if !@open_rest.nil?
+	# 		@open_rest.each do |x|
+	# 			@rating << x["summary"]["star_ratings"]
+	# 		end
+	# 	end
+	# 	@rating
+	# end
 
 	def phonenumber
 		@phone_number = Array.new

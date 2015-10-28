@@ -4,7 +4,6 @@ class MenusController < ApplicationController
     @menu = Menu.new(params.key("").to_i)
     @menu.runner
     
-    
     render "index"
 
   end

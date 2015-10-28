@@ -4,8 +4,8 @@ class CreateRestaurants < ActiveRecord::Migration
         t.integer :merchant_id
         t.string :name
         t.string :address
-        t.float :lat
-        t.float :long
+        t.string :phone_number
+        t.string :cuisine
         t.timestamps null: false
     end
   end
