@@ -7,7 +7,6 @@ class JohdaController < ApplicationController
 		if !params['address'].nil?
 			session['last_search'] = params['address']
 		end
-
 		@input = session['last_search']
 		@results = Getrestaurants.new(@input)
 
@@ -35,12 +34,11 @@ class JohdaController < ApplicationController
 				:phone_number => @results.phonenumber[i])
 			i+=1
 		end
-
+		
 		if @results.name == []
 			flash[:success] = "<b>No results were returned. Please try again.</b>"
 			redirect_to ("/")
 		end
-		@result = Restaurant.order("name").page(params[:page])
 	end
 
 end

@@ -6,17 +6,21 @@ class	Getrestaurants
 
 	def initialize(address)
 		@address = address
-		key = "YzhkZWRhMDg4NGY0MmRiZDhkNTRhMTg2MDM4NjMwN2Fk"
-		@url = "https://api.delivery.com/merchant/search/delivery?client_id=#{key}&address=#{@address}"
-		@list = JSON.load(open(@url))
+		key = ENV["DELIVERY_KEY"]
+		# @url = "https://api.delivery.com/merchant/search/delivery?client_id=#{key}&address=#{@address}"
+		# @list = JSON.load(open(@url))
+		@client = Delivery::Client.new "#{key}"
+		@list = @client.search "#{@address}"
 		displaying
 	end
 
 	def displaying
 		@open_rest = Array.new
-		@list["merchants"].each do |x|
-			if x["ordering"]["is_open"] == true && !x["summary"]["cuisines"].nil?
-				@open_rest << x
+		if !@list["merchants"].nil?
+			@list["merchants"].each do |x|
+				if x["ordering"]["is_open"] == true && !x["summary"]["cuisines"].nil?
+					@open_rest << x
+				end
 			end
 		end
 	end

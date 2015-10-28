@@ -27,6 +27,9 @@ gem 'delivery'
 # pagination
 gem 'kaminari'
 
+# yaml for hiding keys
+gem "figaro"
+
 
 #User
 gem 'devise'
