@@ -1,3 +1,16 @@
 
 <%= render 'menu' %>
 
+<script>
+	$( document ).ready(function() {
+		  var ok
+			$("#blake").click(function(event) {
+				 
+			ok = $(event.target).parent().parent().parent().attr('id')
+			$('[class="'+ok+ ' items hidden"]').removeClass('hidden')
+
+			  })
+		
+
+});
+</script>
