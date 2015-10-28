@@ -1,20 +1,19 @@
 <center>
 	<h1>List of Restaurant</h1>	<br>
+		<% @page.each do |e| %>
+				<strong><%= e.name %></strong><br>
+				<%= e.address %><br>
+				<%= e.phone_number %><br>
+				<%= e.cuisine[1...-1] %><br><br>
+	<% end%>
 
-	<% @users.each do |e|%>
-		<strong><%= e.name %></strong><br>
-		<%= e.address %><br>
-		<%= e.phone_number %><br>
-		<%= e.cuisine[1...-1] %><br><br>
-	<%end%>
 
-
-	<%=paginate @users%>
+	<%=paginate @page%>
 </center>
 
 
 <script>
 	$( document ).ready(function() {
     $("[type='text']").hide()
-});
+	});
 </script>
