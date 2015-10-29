@@ -1,4 +1,5 @@
 <center>
+<div class="se-pre-con">HELLOO ONCDIKNLOJID</div>
 <h1>List of Restaurants</h1>	<br>
  <%= form_tag("../menus/index") do %>
 		<% @page.each do |e| %>
@@ -19,5 +20,15 @@
 <script>
 	$( document ).ready(function() {
     $("[type='text']").hide()
+	});
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+ 
+<script>
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
 	});
 </script>
