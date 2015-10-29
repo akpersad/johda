@@ -7,6 +7,8 @@ class CreateRestaurants < ActiveRecord::Migration
         t.string :phone_number
         t.string :cuisine
         t.string :logo
+        t.integer :rating
+        t.integer :price_rating
         t.timestamps null: false
     end
   end

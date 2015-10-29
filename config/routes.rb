@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/johda/main'
   post 'menus/index'
   get "menus/index"
+  # get 'johda', :to => 'johda#search'
 
   get   '/login', :to => 'sessions#new', :as => :login
   

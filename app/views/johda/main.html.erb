@@ -1,15 +1,16 @@
 <center>
-<h1>List of Restaurants</h1>	<br>
+<h2>Delivering to: <%= @results.search_address %></h2>
+<h2>List of Restaurants</h2>	<br>
  <%= form_tag("../menus/index") do %>
 		<% @page.each do |e| %>
-			<div id="<%= e.merchant_id %>">				
-				<img src="<%= e.logo %>"><br>
+			<div id="<%= e.merchant_id %>" style="width: 40%;">
+				<img style="float: left; margin: 0px 15px 15px 0px;" src="<%= e.logo %>" width="100" />
 				<strong><%= e.name %></strong><br>
 				<%= e.address %><br>
 				<%= e.phone_number %><br>
 				<%= e.cuisine[1...-1] %><br>
 				<%= text_field_tag("#{e.merchant_id}")%>
-				<%= submit_tag "menu" %><br><br>
+				<%= submit_tag "Menu" %><br><br>
 			</div>
 		<% end%>
 	<% end %>
