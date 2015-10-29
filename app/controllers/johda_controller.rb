@@ -22,7 +22,6 @@ class JohdaController < ApplicationController
 		end
 
 		# @page = Restaurant.order(:name).page(params[:page]).per(8)
-		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 
 		i = 0
 		while i < @results.name.length
@@ -31,9 +30,12 @@ class JohdaController < ApplicationController
 				:name => @results.name[i], 
 				:address => @results.address[i], 
 				:cuisine => @results.cuisine[i], 
-				:phone_number => @results.phonenumber[i])
+				:phone_number => @results.phonenumber[i],
+				:logo => @results.merchant_logo[i])
 			i+=1
 		end
+		
+		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 		
 		if @results.name == []
 			flash[:success] = "<b>No results were returned. Please try again.</b>"

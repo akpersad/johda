@@ -51,8 +51,8 @@ class	Getrestaurants
 			@open_rest.each do |address|
 				@addresses.push([
 				address["location"]["street"].titleize, 
-				address["location"]["city"].capitalize, 
-				address["location"]["state"].capitalize, 
+				address["location"]["city"].titleize, 
+				address["location"]["state"].upcase, 
 				address["location"]["zip"]].join(", "))
 			end
 		end

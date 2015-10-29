@@ -6,6 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration
         t.string :address
         t.string :phone_number
         t.string :cuisine
+        t.string :logo
         t.timestamps null: false
     end
   end
