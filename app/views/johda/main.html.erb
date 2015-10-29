@@ -2,8 +2,8 @@
 <h1>List of Restaurants</h1>	<br>
  <%= form_tag("../menus/index") do %>
 		<% @page.each do |e| %>
-			<div id="<%= e.merchant_id %>">
-				<img src="<%= e.logo %>">
+			<div id="<%= e.merchant_id %>">				
+				<img src="<%= e.logo %>"><br>
 				<strong><%= e.name %></strong><br>
 				<%= e.address %><br>
 				<%= e.phone_number %><br>

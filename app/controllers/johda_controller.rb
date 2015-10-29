@@ -11,15 +11,16 @@ class JohdaController < ApplicationController
 		@results = Getrestaurants.new(@input)
 
 		def most_recent
-			array=[]
+			@array=[]
 			@results.name.each do |name|
 				if Restaurant.find_by_name(name)
 					x = Restaurant.find_by_name(name)
-					array << x
+					@array << x
 				end
 			end
-			array
+			@array
 		end
+		binding.pry
 
 		# @page = Restaurant.order(:name).page(params[:page]).per(8)
 
@@ -34,7 +35,6 @@ class JohdaController < ApplicationController
 				:logo => @results.merchant_logo[i])
 			i+=1
 		end
-		
 		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 		
 		if @results.name == []
