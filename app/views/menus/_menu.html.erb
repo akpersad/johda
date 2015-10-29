@@ -1,25 +1,25 @@
 		<div id="blake">
 
 	<% @menu.catagories.each_with_index do |catagory,x| %>
-		<div class ='cat' id='cat <%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
+		<div class='main-cat' data-children=".cat-<%=x%>" id='cat-<%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
 		<% @menu.items[x].each_with_index do |item,y| %>	
 
-			<div class='cat <%=x%> items hidden' id='cat <%=x%> item <%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div>
+			<div class='cat-<%=x%> items' id='cat-<%=x%> items-<%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div><!-- had class of hidden -->
 
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div class='cat <%=x%> items hidden' id='cat <%=x%> item <%=y%> group <%=z%>' class="hidden"> <%= render partial: 'group', locals: {group: group} %> </div>
+				<div class='cat-<%=x%> items-<%=y%> hidden' id='cat <%=x%> item-<%=y%> group-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div>
 
 
 				<% if group.class != String%>
 
 					<% @menu.options[x][y][z].each_with_index do |option,d| %>
 						<%if option.class == Hash%>
-							<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>' class="hidden"> <%= render partial: 'option', locals: {option: option} %> </div>
+							<div id='cat-<%=x%> item-<%=y%> group-<%=z%> option-<%=d%>' class="hidden"> <%= render partial: 'option', locals: {option: option} %> </div>
 						<%else%>
-							<div id='cat <%=x%> item <%=y%> group <%=z%> option <%=d%>' class="hidden"> <%= option[0] %></div>
+							<div id='cat-<%=x%> item-<%=y%> group-<%=z%> option-<%=d%>' class="hidden"> <%= option[0] %></div>
 						<%end%>
 
 					<% end %>
@@ -29,7 +29,7 @@
 	<% end %>
 	</div>
 
-<%= submit_tag 'Submit' %>
+
 
 
 
