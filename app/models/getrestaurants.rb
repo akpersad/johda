@@ -12,6 +12,12 @@ class	Getrestaurants
 		@client = Delivery::Client.new "#{key}"
 		@list = @client.search "#{@address}"
 		displaying
+		price_rating
+	end
+
+	def search_address
+		a = @list["search_address"]
+		@address = "#{a["street"]}., #{a["city"]}, #{a["state"]}, #{a["zip_code"]}"
 	end
 
 	def displaying
@@ -103,15 +109,15 @@ class	Getrestaurants
 		@cuisines
 	end
 
-	# def rating
-	# 	@rating = Array.new
-	# 	if !@open_rest.nil?
-	# 		@open_rest.each do |x|
-	# 			@rating << x["summary"]["star_ratings"]
-	# 		end
-	# 	end
-	# 	@rating
-	# end
+	def rating
+		@rating = Array.new
+		if !@open_rest.nil?
+			@open_rest.each do |x|
+				@rating << x["summary"]["star_ratings"]
+			end
+		end
+		@rating
+	end
 
 	def phonenumber
 		@phone_number = Array.new
@@ -120,7 +126,19 @@ class	Getrestaurants
 				@phone_number << x["summary"]["phone"]
 			end
 		end
-		@phone_number
+		@price_rating.map! {|x|x || 0}
+		# a = @price_rating.apartition{|x| x.is_a? String}.map(&:sort).flatten.reverse!
+	end
+
+	def price_rating
+		@price_rating = Array.new
+		if !@open_rest.nil?
+			@open_rest.each do |x|
+				@price_rating << x["summary"]["price_rating"]
+			end
+		end
+		@price_rating.map! {|x|x || 0}
+		# a = @price_rating.apartition{|x| x.is_a? String}.map(&:sort).flatten.reverse!
 	end
 
 	def merchant_logo
