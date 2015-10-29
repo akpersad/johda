@@ -10,7 +10,7 @@
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div id='cat <%=x%> item <%=y%> group <%=z%>' class="hidden"> <%= render partial: 'group', locals: {group: group} %> </div>
+				<div class='cat <%=x%> items hidden' id='cat <%=x%> item <%=y%> group <%=z%>' class="hidden"> <%= render partial: 'group', locals: {group: group} %> </div>
 
 
 				<% if group.class != String%>
