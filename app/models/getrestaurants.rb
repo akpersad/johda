@@ -1,6 +1,7 @@
 require 'pry'
 require 'json'
 require 'open-uri'
+require 'delivery'
 
 class	Getrestaurants
 
@@ -12,7 +13,8 @@ class	Getrestaurants
 		@client = Delivery::Client.new "#{key}"
 		@list = @client.search "#{@address}"
 		displaying
-		price_rating
+		rating
+		rating_img
 	end
 
 	def search_address
@@ -116,7 +118,27 @@ class	Getrestaurants
 				@rating << x["summary"]["star_ratings"]
 			end
 		end
-		@rating
+		@rating.map! {|x|x || 0}
+	end
+
+	def rating_img
+		@rating_img = Array.new
+		@rating.each do |rate|
+			if rate >= 5
+				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/5_0/5/ratingSecondary.gif"
+			elsif rate <5 && rate >= 4
+				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/3_7/5/ratingSecondary.gif"		
+			elsif rate <4 && rate >= 3
+				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/3_0/5/ratingSecondary.gif"
+			elsif rate < 3 && rate >= 2
+				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/1_8/5/ratingSecondary.gif"
+			elsif rate < 2 && rate >= 1
+				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/1_0/5/ratingSecondary.gif"
+			else
+				@rating_img << "http://www.coutellerie-tourangelle.com/images/imagecache/fiche_article/1817643Product_Primary_Image_1297700022.jpg"
+			end
+		end
+		@rating_img
 	end
 
 	def phonenumber
@@ -126,8 +148,7 @@ class	Getrestaurants
 				@phone_number << x["summary"]["phone"]
 			end
 		end
-		@price_rating.map! {|x|x || 0}
-		# a = @price_rating.apartition{|x| x.is_a? String}.map(&:sort).flatten.reverse!
+		@phone_number
 	end
 
 	def price_rating

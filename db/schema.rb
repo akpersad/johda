@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151026184342) do
     t.string   "logo"
     t.integer  "rating"
     t.integer  "price_rating"
+    t.string   "rating_img"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

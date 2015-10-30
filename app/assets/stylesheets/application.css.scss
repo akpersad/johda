@@ -34,3 +34,19 @@ body {
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
+
+.right {
+    float: right;
+    width: 33%;
+    background-color: #b0e0e6;
+}
+
+.left {
+	float: left;
+	width: 67%;
+}
+
+.bottom {
+	position: absolute;
+    bottom: 0;
+}

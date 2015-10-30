@@ -9,6 +9,7 @@ class CreateRestaurants < ActiveRecord::Migration
         t.string :logo
         t.integer :rating
         t.integer :price_rating
+        t.string :rating_img
         t.timestamps null: false
     end
   end
