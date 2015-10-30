@@ -5,12 +5,13 @@
 
 		<% @menu.items[x].each_with_index do |item,y| %>	
 
-			<div class='cat-<%=x%> items' id='cat-<%=x%> items-<%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div><!-- had class of hidden -->
+			<div class='cat-<%=x%> items' data-children=".items-<%=y%>" id='cat-<%=x%> items-<%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div><!-- had class of hidden -->
 
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div class='cat-<%=x%> items-<%=y%> hidden' id='cat <%=x%> item-<%=y%> group-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div>
+				<div class='cat-<%=x%> items-<%=y%> groups'  id='cat <%=x%> item-<%=y%> group-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div> 
+				<!-- items-<%=y%> -->
 
 
 				<% if group.class != String%>

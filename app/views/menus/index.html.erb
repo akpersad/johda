@@ -4,6 +4,7 @@
 <script>
 	$( document ).ready(function() {
 
+
 		//var ok;
 
 		//var $mainCatCheckbox = $('<%=   %>').find('input[type="checkbox"]');
@@ -11,7 +12,7 @@
 		//var $curCatItems = $('.cat-0.items'),
 		var	$mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]'),
 			$allItems = $('.items');
-
+ 
 		$allItems.hide();
 
 		$mainCatCheckboxes.change(function () {
@@ -19,13 +20,48 @@
 			var curCatItems = $(this).parents('div').data('children');
 
 			if ($(this).prop('checked')) {
-				$(curCatItems).show(); 
+				$(curCatItems).show();
+				$('.groups').hide();
+
 			} else {
 				var $itemCheckboxes = $(curCatItems).find('input[type="checkbox"]:checked');
 				$itemCheckboxes.removeAttr('checked');
+				$('.groups').hide();
 				$(curCatItems).hide();
 			}
 		});
+
+		$('.groups').hide();
+
+		
+
+		
+
+
+
+		// items code trying to follow johns pattern above
+
+		var	$itemsCheckboxes = $('.items').find('input[type="checkbox"]'),
+			$allGroups = $('.groups')
+
+		// $allGroups.hide();
+
+		$itemsCheckboxes.change(function (){
+
+			var curItemGroups = $(this).parents('div').data('children');
+			
+			if ($(this).prop('checked')) {
+				$(curItemGroups).show(); 
+			} else {
+				var groupCheckboxes = $(curItemGroups).find('input[type="checkbox"]:checked');
+				groupCheckboxes.removeAttr('checked');
+				$('.groups').hide();
+			}
+
+		})
+
+
+		// make option groups show option up until now all works
 
 		  
 			// $("#blake").click(function(event) {
