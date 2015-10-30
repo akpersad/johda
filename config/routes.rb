@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'users/new'
+
   root to: 'johda#search'
 
   post 'johda/main'

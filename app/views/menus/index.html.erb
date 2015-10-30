@@ -42,7 +42,9 @@
 		var $itemShow
 
 
+
 		$itemsCheckboxes.change(function (){
+			$('.options').hide()
 
 			var curItemGroups = $(this).parents('div').data('children');
 			 curItemClass = $(this).parents('div').attr('class').substr(0,6).trim()
@@ -66,9 +68,46 @@
 
 		})
 
+		var $classToIdComp
+		var $optionShow
+		
+
 		//  working on options
 		var	$groupsCheckboxes = $('.groups').find('input[type="checkbox"]'),
-			$allItems = $('.items');
+			$allOptions = $('.allOptions');
+
+			$allOptions.hide();
+
+			$groupsCheckboxes.change(function (){
+
+				var curGroupOptions = $(this).parents('div').data('children');
+				 $classToIdComp = $(this).parent().parent('div').show().attr('class').substr(0,14).trim()
+
+
+				$allOptions.each(function(){
+
+					
+					if ($(this).attr('id').substr(0,13).trim() == $classToIdComp){
+						$optionShow = $(this)
+
+					}
+
+				})
+
+				if ($(this).prop('checked')){
+					
+					$optionShow.show();
+				} else {
+
+				var optionsClassToHide = $optionShow.attr('class').substr(19,23)
+
+				var optionCheckboxes = $('.'+optionsClassToHide).find('input[type="checkbox"]:checked');
+				optionCheckboxes.removeAttr('checked');
+				$optionShow.hide()
+			}
+
+			})
+
 
 
 
