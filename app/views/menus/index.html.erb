@@ -1,6 +1,11 @@
 
 <%= render 'menu' %>
 
+
+  <input id='submit' type="submit" value="Submit">
+
+
+
 <script>
 	$( document ).ready(function() {
 
@@ -11,25 +16,25 @@
 
 		$mainCatCheckboxes.change(function () {
 
+
 			var curCatItems = $(this).parents('div').data('children');
 
 			if ($(this).prop('checked')) {
 				$(curCatItems).show();
 				$('.groups').hide();
+				$('.options').hide()
 
 			} else {
 				var $itemCheckboxes = $(curCatItems).find('input[type="checkbox"]:checked');
 				$itemCheckboxes.removeAttr('checked');
 				$('.groups').hide();
+				$('.options').hide()
 				$(curCatItems).hide();
 			}
 		});
 
 		$('.groups').hide();
 
-		
-
-		
 
 
 
@@ -44,15 +49,29 @@
 
 
 		$itemsCheckboxes.change(function (){
-			$('.options').hide()
+			
 
 			var curItemGroups = $(this).parents('div').data('children');
-			 curItemClass = $(this).parents('div').attr('class').substr(0,6).trim()
+			 curItemClass = $(this).parents('div').attr('class').substr(0,14).trim()
+			 $('.options').hide()
+
+			 // debugger
+			 
 
 			$(curItemGroups).each(function(){
-			 		if ($(this).attr('class').substr(0,6).trim() == curItemClass){
+				
+			 		if ($(this).attr('class').substr(0,6).trim() == curItemClass.substr(0,6).trim()){
+			 			// $('.cat-0.items-0').show()
+			 			// "cat-0 items-0"
+			 			var first = curItemClass.substr(0,6).trim()
 
-			 			$itemShow = $(this)
+			 			var second = curItemClass.substr(6,8).trim()
+			 			
+
+
+
+
+			 			$itemShow = $('.'+first+'.'+second+'.groups').show()
 			 		}
 				
 			})
@@ -60,6 +79,7 @@
 			if ($(this).prop('checked')) {
 				
 				$itemShow.show(); 
+
 			} else {
 				var groupCheckboxes = $(curItemGroups).find('input[type="checkbox"]:checked');
 				groupCheckboxes.removeAttr('checked');
@@ -70,6 +90,7 @@
 
 		var $classToIdComp
 		var $optionShow
+		$('.allOptions').hide()
 		
 
 		//  working on options
@@ -81,14 +102,17 @@
 			$groupsCheckboxes.change(function (){
 
 				var curGroupOptions = $(this).parents('div').data('children');
-				 $classToIdComp = $(this).parent().parent('div').show().attr('class').substr(0,14).trim()
+				 $classToIdComp = $(this).parent().parent('div').attr('class').substr(0,14).trim()
 
 
 				$allOptions.each(function(){
+					// debugger
 
 					
 					if ($(this).attr('id').substr(0,13).trim() == $classToIdComp){
-						$optionShow = $(this)
+						
+						$optionShow = $('.'+this.classList[0]+'.'+this.classList[1]+'.'+this.classList[2]).show()
+						// $(".cat-0.items-0").show()
 
 					}
 
@@ -107,6 +131,18 @@
 			}
 
 			})
+
+			$('#submit').click(function(){
+				
+				if ($('#blake').find('input[type="checkbox"]:checked').length > 0){
+					var allChecked = $('#blake').find('input[type="checkbox"]:checked')
+
+					allChecked.each(function(){})
+				}
+			})
+
+
+			
 
 
 
