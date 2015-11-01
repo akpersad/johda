@@ -47,7 +47,6 @@
 		// $allGroups.hide();
 
 		$itemsCheckboxes.change(function (){
-
 			var curItemGroups = $(this).parents('div').data('children');
 			
 			if ($(this).prop('checked')) {
@@ -55,13 +54,37 @@
 			} else {
 				var groupCheckboxes = $(curItemGroups).find('input[type="checkbox"]:checked');
 				groupCheckboxes.removeAttr('checked');
-				$('.groups').hide();
+				// debugger
+				$(curItemGroups).hide();
 			}
 
 		})
 
 
 		// make option groups show option up until now all works
+
+		// var $groupsCheckboxes = $('.groups').find('input[type="checkbox"]'),
+		// 	$allOptions = $('.options')
+		// 	$allOptions.hide()
+
+		// $groupsCheckboxes.change(function (){
+
+		// 	// var curGroupOptions = $(this).parents('div').data('children');
+		// 	var curGroupOptions = $(this).parents('div').data('children');
+
+		// 	if ($(this).prop('checked')) {
+		// 		//not showing??2
+		// 		$(curGroupOptions).show(); 
+		// 	} 
+
+		// })
+
+
+
+
+
+
+
 
 		  
 			// $("#blake").click(function(event) {

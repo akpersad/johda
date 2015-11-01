@@ -10,7 +10,7 @@
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div class='cat-<%=x%> items-<%=y%> groups'  id='cat <%=x%> item-<%=y%> group-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div> 
+				<div class='cat-<%=x%> items-<%=y%> groups' data-children=".groups-<%=z%>"  id='cat <%=x%> item-<%=y%> group-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div> 
 				<!-- items-<%=y%> -->
 
 
@@ -18,9 +18,9 @@
 
 					<% @menu.options[x][y][z].each_with_index do |option,d| %>
 						<%if option.class == Hash%>
-							<div id='cat-<%=x%> item-<%=y%> group-<%=z%> option-<%=d%>' class="hidden"> <%= render partial: 'option', locals: {option: option} %> </div>
+							<div id='cat-<%=x%> item-<%=y%> group-<%=z%> option-<%=d%>' class="options"> <%= render partial: 'option', locals: {option: option} %> </div>
 						<%else%>
-							<div id='cat-<%=x%> item-<%=y%> group-<%=z%> option-<%=d%>' class="hidden"> <%= option[0] %></div>
+							<div id='cat-<%=x%> item-<%=y%> group-<%=z%> option-<%=d%>' class="options"> <%= option[0] %></div>
 						<%end%>
 
 					<% end %>
