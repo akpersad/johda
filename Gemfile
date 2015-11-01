@@ -44,6 +44,11 @@ group :development do
   gem 'spring'
 end
 
+  #bcrypt, for password security
+  gem 'bcrypt'
+
+
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
