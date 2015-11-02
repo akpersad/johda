@@ -1,2 +1,102 @@
 
 <%= render 'menu' %>
+
+
+  <input id='submit' type="submit" value="Submit">
+
+
+
+<script>
+	$( document ).ready(function() {
+		$('.items').hide();
+		$('.groups').hide();
+		$('.options').hide();
+		 var $mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]')
+		 $mainCatCheckboxes.change(function (){ 
+		 	var current_class_shared = '.' + $(this).parent().parent().parent()[0].classList[1]
+		 	var items_for_class
+		 	if ($(this).prop('checked')){
+		 		$(current_class_shared).show()
+		 	} else {
+		 		$(current_class_shared).each(function(){
+		 			if (this.classList[0] == 'items'){
+		 				$(this).find('input[type="checkbox"]').removeAttr('checked');
+		 				$(this).hide();
+		 				// nested items also hide and uncheck
+		 				if ($(this).children().is(':checked') == false){
+						 		var current_item_class = '.'+this.classList[2]
+					 			$(current_item_class).each(function(){
+					 				if (this.classList[0] == 'groups'){
+					 					$(this).find('input[type="checkbox"]').removeAttr('checked');
+					 					$(this).hide()
+					 				}
+					 				if (this.classList[0] == 'groups'){
+					 					var optionsToHide = this.classList[2]
+					 					$('.'+optionsToHide).each(function(){
+					 						$(this).hide();
+					 						$(this).find('input[type="checkbox"]').removeAttr('checked');
+					 					})
+					 				}
+					 		})
+					 	}
+		 			}
+		 		})
+		 	}
+
+		 	// idea here is to refer to the items inside catagory
+		 	$(current_class_shared).change(function(){
+
+		 		if (this.classList[0] == 'items'){
+		 			
+		 			var current_item_class = '.'+this.classList[2]
+		 			$(current_item_class).each(function(){
+		 				if (this.classList[0] == 'groups'){
+		 					$(this).show()
+		 				}
+		 			})
+		 		}
+		 		if (this.classList[0] == 'items'){
+			 		if ($(this).children().is(':checked') == false){
+				 		var current_item_class = '.'+this.classList[2]
+			 			$(current_item_class).each(function(){
+			 				if (this.classList[0] == 'groups'){
+			 					$(this).find('input[type="checkbox"]').removeAttr('checked');
+			 					$(this).hide()
+			 				}
+			 				if (this.classList[0] == 'groups'){
+					 					var optionsToHide = this.classList[2]
+					 					$('.'+optionsToHide).each(function(){
+					 						$(this).hide();
+					 						$(this).find('input[type="checkbox"]').removeAttr('checked');
+					 					})
+					 				}
+			 			})
+			 		}
+			 	}
+		 	});
+		 	// idea here is to refer to groups and options
+		 	$(current_class_shared).change(function(){
+		 		if (this.classList[0] == 'items'){
+		 			
+		 			$("."+this.classList[2]).change(function(){
+		 				if (this.classList[0] == 'groups' ){
+		 					$('.'+this.classList[2]).show()
+		 				}
+
+		 				if (this.classList[0] == 'groups' ){
+		 					if ($(this).find('input[type="checkbox"]').is(':checked') == false){
+		 						var current_options_to_hide = this.classList[2]
+		 						$('.'+current_options_to_hide).each(function(){
+		 							if (this.classList[0] == 'options'){
+		 								$(this).find('input[type="checkbox"]').removeAttr('checked');
+		 								$(this).hide()
+		 							}
+		 						})
+		 					}
+		 				} 
+		 			})		
+		 		}
+		 	})
+		 })
+});
+</script>
