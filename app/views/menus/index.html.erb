@@ -11,18 +11,10 @@
 		$('.items').hide();
 		$('.groups').hide();
 		$('.options').hide();
-
-
 		 var $mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]')
-
 		 $mainCatCheckboxes.change(function (){ 
-
 		 	var current_class_shared = '.' + $(this).parent().parent().parent()[0].classList[1]
-
-
 		 	var items_for_class
-		 	
-
 		 	if ($(this).prop('checked')){
 		 		$(current_class_shared).show()
 		 	} else {
@@ -38,7 +30,6 @@
 					 					$(this).find('input[type="checkbox"]').removeAttr('checked');
 					 					$(this).hide()
 					 				}
-
 					 				if (this.classList[0] == 'groups'){
 					 					var optionsToHide = this.classList[2]
 					 					$('.'+optionsToHide).each(function(){
@@ -48,17 +39,11 @@
 					 				}
 					 		})
 					 	}
-					 	
-
 		 			}
-
 		 		})
 		 	}
 
-
 		 	// idea here is to refer to the items inside catagory
-
-
 		 	$(current_class_shared).change(function(){
 
 		 		if (this.classList[0] == 'items'){
@@ -70,7 +55,6 @@
 		 				}
 		 			})
 		 		}
-
 		 		if (this.classList[0] == 'items'){
 			 		if ($(this).children().is(':checked') == false){
 				 		var current_item_class = '.'+this.classList[2]
@@ -79,8 +63,6 @@
 			 					$(this).find('input[type="checkbox"]').removeAttr('checked');
 			 					$(this).hide()
 			 				}
-
-
 			 				if (this.classList[0] == 'groups'){
 					 					var optionsToHide = this.classList[2]
 					 					$('.'+optionsToHide).each(function(){
@@ -88,26 +70,13 @@
 					 						$(this).find('input[type="checkbox"]').removeAttr('checked');
 					 					})
 					 				}
-
-
-
-
 			 			})
 			 		}
 			 	}
-
-			 	
-
 		 	});
-
-
 		 	// idea here is to refer to groups and options
-		 	
-
 		 	$(current_class_shared).change(function(){
-		 		
 		 		if (this.classList[0] == 'items'){
-		 			
 		 			
 		 			$("."+this.classList[2]).change(function(){
 		 				if (this.classList[0] == 'groups' ){
@@ -125,162 +94,9 @@
 		 						})
 		 					}
 		 				} 
-		 			})
-
-		 			
+		 			})		
 		 		}
 		 	})
-
-		 	
-
-
-
-		 	
-		
-		 	
-
-
 		 })
-
-
-
-		// var	$mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]'),
-		// 	$allItems = $('.items');
- 
-		// $allItems.hide();
-
-		// $mainCatCheckboxes.change(function () {
-
-
-		// 	var curCatItems = $(this).parents('div').data('children');
-
-		// 	if ($(this).prop('checked')) {
-		// 		$(curCatItems).show();
-		// 		$('.groups').hide();
-		// 		$('.options').hide()
-
-		// 	} else {
-		// 		var $itemCheckboxes = $(curCatItems).find('input[type="checkbox"]:checked');
-		// 		$itemCheckboxes.removeAttr('checked');
-		// 		$('.groups').hide();
-		// 		$('.options').hide()
-		// 		$(curCatItems).hide();
-		// 	}
-		// });
-
-		// $('.groups').hide();
-
-
-
-
-		// // items code trying to follow johns pattern above
-
-		// var	$itemsCheckboxes = $('.items').find('input[type="checkbox"]'),
-		// 	$allGroups = $('.groups')
-			
-		// var curItemClass
-		// var $itemShow
-
-
-
-		// $itemsCheckboxes.change(function (){
-			
-
-		// 	var curItemGroups = $(this).parents('div').data('children');
-		// 	 curItemClass = $(this).parents('div').attr('class').substr(0,14).trim()
-		// 	 $('.options').hide()
-
-		// 	 // debugger
-			 
-
-		// 	$(curItemGroups).each(function(){
-				
-		// 	 		if ($(this).attr('class').substr(0,6).trim() == curItemClass.substr(0,6).trim()){
-		// 	 			// $('.cat-0.items-0').show()
-		// 	 			// "cat-0 items-0"
-		// 	 			var first = curItemClass.substr(0,6).trim()
-
-		// 	 			var second = curItemClass.substr(6,8).trim()
-			 			
-
-
-
-
-		// 	 			$itemShow = $('.'+first+'.'+second+'.groups').show()
-		// 	 		}
-				
-		// 	})
-			
-		// 	if ($(this).prop('checked')) {
-				
-		// 		$itemShow.show(); 
-
-		// 	} else {
-		// 		var groupCheckboxes = $(curItemGroups).find('input[type="checkbox"]:checked');
-		// 		groupCheckboxes.removeAttr('checked');
-		// 		$itemShow.hide();
-		// 	}
-
-		// })
-
-		// var $classToIdComp
-		// var $optionShow
-		// $('.allOptions').hide()
-		
-
-		// //  working on options
-		// var	$groupsCheckboxes = $('.groups').find('input[type="checkbox"]'),
-		// 	$allOptions = $('.allOptions');
-
-		// 	$allOptions.hide();
-
-		// 	$groupsCheckboxes.change(function (){
-
-		// 		var curGroupOptions = $(this).parents('div').data('children');
-		// 		 $classToIdComp = $(this).parent().parent('div').attr('class').substr(0,14).trim()
-
-
-		// 		$allOptions.each(function(){
-		// 			// debugger
-
-					
-		// 			if ($(this).attr('id').substr(0,13).trim() == $classToIdComp){
-						
-		// 				$optionShow = $('.'+this.classList[0]+'.'+this.classList[1]+'.'+this.classList[2]).show()
-		// 				// $(".cat-0.items-0").show()
-
-		// 			}
-
-		// 		})
-
-		// 		if ($(this).prop('checked')){
-					
-		// 			$optionShow.show();
-		// 		} else {
-
-		// 		var optionsClassToHide = $optionShow.attr('class').substr(19,23)
-
-		// 		var optionCheckboxes = $('.'+optionsClassToHide).find('input[type="checkbox"]:checked');
-		// 		optionCheckboxes.removeAttr('checked');
-		// 		$optionShow.hide()
-		// 	}
-
-		// 	})
-
-		// 	$('#submit').click(function(){
-				
-		// 		if ($('#blake').find('input[type="checkbox"]:checked').length > 0){
-		// 			var allChecked = $('#blake').find('input[type="checkbox"]:checked')
-
-		// 			allChecked.each(function(){})
-		// 		}
-		// 	})
-
-
-			
-
-
-
-
 });
 </script>
