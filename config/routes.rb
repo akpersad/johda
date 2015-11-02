@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-
-  get 'users/new'
+  resources :users
+  # get 'users/new'
 
   root to: 'johda#search'
 
@@ -15,11 +15,11 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get   '/login', :to => 'sessions#new', :as => :login
+  # get   '/login', :to => 'sessions#new', :as => :login
   
-  get '/auth/:provider/callback/', :to => 'sessions#create'
+  # get '/auth/:provider/callback/', :to => 'sessions#create'
   
-  get '/auth/failure', :to => 'sessions#failure'
+  # get '/auth/failure', :to => 'sessions#failure'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
     # root 'index#welcome'
