@@ -1,38 +1,28 @@
-		<div id="blake">
+		<div id="top">
 
 	<% @menu.catagories.each_with_index do |catagory,x| %>
-		<div class='main-cat' data-children=".cat-<%=x%>" id='cat-<%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
+		<div class='main-cat c-<%=x%>' data-children=".cat-<%=x%>"> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
 
 		<% @menu.items[x].each_with_index do |item,y| %>	
 
-			<div class='cat-<%=x%> items-<%=y%> items' data-children=".items-<%=y%>" id='cat-<%=x%> items-<%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div><!-- had class of hidden -->
+			<div class='items c-<%=x%> i-<%=y%>' data-children=".items-<%=y%>" id='cat-<%=x%> items-<%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div>
 
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div class='cat-<%=x%> items-<%=y%> groups' data-children='.groups-<%=z%>'  id='cat <%=x%> item-<%=y%> group-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div> 
-				<!-- items-<%=y%> -->
+				<div class='groups i-<%=y%>' data-children='.groups-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div> 
 
 
 				<% if group.class != String%>
 
 					<% @menu.options[x][y][z].each_with_index do |option,d| %>
-						<div id='cat-<%=x%> items-<%=y%> group-<%=z%> option-<%=d%>' class="cat-<%=x%> items-<%=y%> group-<%=z%> option-<%=d%> allOptions options cat-<%=x%>-items-<%=y%>-group-<%=z%>"> <%= render partial: 'option', locals: {option: option} %> </div>
+						<div class="allOptions"> <%= render partial: 'option', locals: {option: option} %> </div>
 					<% end %>
 				<%end%>
 			<%end%>
-		<%end%>
+		<%end%> 
 
 
 	<% end %>
 	</div>
-
-
-
-
-
-
-
-
-

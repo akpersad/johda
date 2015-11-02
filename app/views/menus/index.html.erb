@@ -8,138 +8,174 @@
 
 <script>
 	$( document ).ready(function() {
-
-		var	$mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]'),
-			$allItems = $('.items');
- 
-		$allItems.hide();
-
-		$mainCatCheckboxes.change(function () {
-
-
-			var curCatItems = $(this).parents('div').data('children');
-
-			if ($(this).prop('checked')) {
-				$(curCatItems).show();
-				$('.groups').hide();
-				$('.options').hide()
-
-			} else {
-				var $itemCheckboxes = $(curCatItems).find('input[type="checkbox"]:checked');
-				$itemCheckboxes.removeAttr('checked');
-				$('.groups').hide();
-				$('.options').hide()
-				$(curCatItems).hide();
-			}
-		});
-
+		$('.items').hide();
 		$('.groups').hide();
+		$('.allOptions').hide();
+
+
+		 var $mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]')
+
+		 $mainCatCheckboxes.change(function (){ 
+
+		 	var current_class_shared = '.' + $(this).parent().parent().parent()[0].classList[1]
+		 	debugger
+
+		 	if ($(this).prop('checked')){
+
+		 		$(current_class_shared).show()
+		 	} else {
+		 		$(current_class_shared).each(function(){
+		 			if (this.classList[0] == 'items'){
+		 				$(this).find('input[type="checkbox"]').removeAttr('checked');
+		 				$(this).hide();
+		 			}
+		 		})
+		 	}
+
+
+		 	// idea here is to refer to the items inside catagory
+		 
+		 	$(current_class_shared).not(0).change(function(){
+		 		
+		 	})
+
+
+
+		 })
+
+
+
+		// var	$mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]'),
+		// 	$allItems = $('.items');
+ 
+		// $allItems.hide();
+
+		// $mainCatCheckboxes.change(function () {
+
+
+		// 	var curCatItems = $(this).parents('div').data('children');
+
+		// 	if ($(this).prop('checked')) {
+		// 		$(curCatItems).show();
+		// 		$('.groups').hide();
+		// 		$('.options').hide()
+
+		// 	} else {
+		// 		var $itemCheckboxes = $(curCatItems).find('input[type="checkbox"]:checked');
+		// 		$itemCheckboxes.removeAttr('checked');
+		// 		$('.groups').hide();
+		// 		$('.options').hide()
+		// 		$(curCatItems).hide();
+		// 	}
+		// });
+
+		// $('.groups').hide();
 
 
 
 
-		// items code trying to follow johns pattern above
+		// // items code trying to follow johns pattern above
 
-		var	$itemsCheckboxes = $('.items').find('input[type="checkbox"]'),
-			$allGroups = $('.groups')
+		// var	$itemsCheckboxes = $('.items').find('input[type="checkbox"]'),
+		// 	$allGroups = $('.groups')
 			
-		var curItemClass
-		var $itemShow
+		// var curItemClass
+		// var $itemShow
 
 
 
-		$itemsCheckboxes.change(function (){
+		// $itemsCheckboxes.change(function (){
 			
 
-			var curItemGroups = $(this).parents('div').data('children');
-			 curItemClass = $(this).parents('div').attr('class').substr(0,14).trim()
-			 $('.options').hide()
+		// 	var curItemGroups = $(this).parents('div').data('children');
+		// 	 curItemClass = $(this).parents('div').attr('class').substr(0,14).trim()
+		// 	 $('.options').hide()
 
-			 // debugger
+		// 	 // debugger
 			 
 
-			$(curItemGroups).each(function(){
+		// 	$(curItemGroups).each(function(){
 				
-			 		if ($(this).attr('class').substr(0,6).trim() == curItemClass.substr(0,6).trim()){
-			 			// $('.cat-0.items-0').show()
-			 			// "cat-0 items-0"
-			 			var first = curItemClass.substr(0,6).trim()
+		// 	 		if ($(this).attr('class').substr(0,6).trim() == curItemClass.substr(0,6).trim()){
+		// 	 			// $('.cat-0.items-0').show()
+		// 	 			// "cat-0 items-0"
+		// 	 			var first = curItemClass.substr(0,6).trim()
 
-			 			var second = curItemClass.substr(6,8).trim()
+		// 	 			var second = curItemClass.substr(6,8).trim()
 			 			
 
 
 
 
-			 			$itemShow = $('.'+first+'.'+second+'.groups').show()
-			 		}
+		// 	 			$itemShow = $('.'+first+'.'+second+'.groups').show()
+		// 	 		}
 				
-			})
+		// 	})
 			
-			if ($(this).prop('checked')) {
+		// 	if ($(this).prop('checked')) {
 				
-				$itemShow.show(); 
+		// 		$itemShow.show(); 
 
-			} else {
-				var groupCheckboxes = $(curItemGroups).find('input[type="checkbox"]:checked');
-				groupCheckboxes.removeAttr('checked');
-				$itemShow.hide();
-			}
+		// 	} else {
+		// 		var groupCheckboxes = $(curItemGroups).find('input[type="checkbox"]:checked');
+		// 		groupCheckboxes.removeAttr('checked');
+		// 		$itemShow.hide();
+		// 	}
 
-		})
+		// })
 
-		var $classToIdComp
-		var $optionShow
-		$('.allOptions').hide()
+		// var $classToIdComp
+		// var $optionShow
+		// $('.allOptions').hide()
 		
 
-		//  working on options
-		var	$groupsCheckboxes = $('.groups').find('input[type="checkbox"]'),
-			$allOptions = $('.allOptions');
+		// //  working on options
+		// var	$groupsCheckboxes = $('.groups').find('input[type="checkbox"]'),
+		// 	$allOptions = $('.allOptions');
 
-			$allOptions.hide();
+		// 	$allOptions.hide();
 
-			$groupsCheckboxes.change(function (){
+		// 	$groupsCheckboxes.change(function (){
 
-				var curGroupOptions = $(this).parents('div').data('children');
-				 $classToIdComp = $(this).parent().parent('div').attr('class').substr(0,14).trim()
+		// 		var curGroupOptions = $(this).parents('div').data('children');
+		// 		 $classToIdComp = $(this).parent().parent('div').attr('class').substr(0,14).trim()
 
 
-				$allOptions.each(function(){
-					// debugger
+		// 		$allOptions.each(function(){
+		// 			// debugger
 
 					
-					if ($(this).attr('id').substr(0,13).trim() == $classToIdComp){
+		// 			if ($(this).attr('id').substr(0,13).trim() == $classToIdComp){
 						
-						$optionShow = $('.'+this.classList[0]+'.'+this.classList[1]+'.'+this.classList[2]).show()
-						// $(".cat-0.items-0").show()
+		// 				$optionShow = $('.'+this.classList[0]+'.'+this.classList[1]+'.'+this.classList[2]).show()
+		// 				// $(".cat-0.items-0").show()
 
-					}
+		// 			}
 
-				})
+		// 		})
 
-				if ($(this).prop('checked')){
+		// 		if ($(this).prop('checked')){
 					
-					$optionShow.show();
-				} else {
+		// 			$optionShow.show();
+		// 		} else {
 
-				var optionsClassToHide = $optionShow.attr('class').substr(19,23)
+		// 		var optionsClassToHide = $optionShow.attr('class').substr(19,23)
 
-				var optionCheckboxes = $('.'+optionsClassToHide).find('input[type="checkbox"]:checked');
-				optionCheckboxes.removeAttr('checked');
-				$optionShow.hide()
-			}
+		// 		var optionCheckboxes = $('.'+optionsClassToHide).find('input[type="checkbox"]:checked');
+		// 		optionCheckboxes.removeAttr('checked');
+		// 		$optionShow.hide()
+		// 	}
 
-			})
+		// 	})
 
-			$('#submit').click(function(){
+		// 	$('#submit').click(function(){
 				
-				if ($('#blake').find('input[type="checkbox"]:checked').length > 0){
-					var allChecked = $('#blake').find('input[type="checkbox"]:checked')
+		// 		if ($('#blake').find('input[type="checkbox"]:checked').length > 0){
+		// 			var allChecked = $('#blake').find('input[type="checkbox"]:checked')
 
-					allChecked.each(function(){})
-				}
-			})
+		// 			allChecked.each(function(){})
+		// 		}
+		// 	})
 
 
 			
