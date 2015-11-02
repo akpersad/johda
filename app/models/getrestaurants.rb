@@ -125,15 +125,23 @@ class	Getrestaurants
 		@rating_img = Array.new
 		@rating.each do |rate|
 			if rate >= 5
-				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/5_0/5/ratingSecondary.gif"
-			elsif rate <5 && rate >= 4
-				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/3_7/5/ratingSecondary.gif"		
-			elsif rate <4 && rate >= 3
-				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/3_0/5/ratingSecondary.gif"
-			elsif rate < 3 && rate >= 2
-				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/1_8/5/ratingSecondary.gif"
-			elsif rate < 2 && rate >= 1
-				@rating_img << "https://t-mobile.ugc.bazaarvoice.com/9060redes2-en_us/1_0/5/ratingSecondary.gif"
+				@rating_img << "http://i.imgur.com/kfZfAqz.png"
+			elsif rate == 4.5
+				@rating_img << "http://i.imgur.com/IWYguVS.png"
+			elsif rate == 4
+				@rating_img << "http://i.imgur.com/1DWwykk.png"	
+			elsif rate == 3.5
+				@rating_img << "http://i.imgur.com/UZysvEt.png"
+			elsif rate == 3
+				@rating_img << "http://i.imgur.com/BRmZNj5.png"
+			elsif rate == 2.5
+				@rating_img << "http://i.imgur.com/oYBhO4V.png"
+			elsif rate == 2
+				@rating_img << "http://i.imgur.com/J8X1vzk.png"
+			elsif rate == 1.5
+				@rating_img << "http://i.imgur.com/H6MZGkJ.png"
+			elsif rate == 1
+				@rating_img << "http://i.imgur.com/4mr0qBY.png"
 			else
 				@rating_img << "http://www.coutellerie-tourangelle.com/images/imagecache/fiche_article/1817643Product_Primary_Image_1297700022.jpg"
 			end
