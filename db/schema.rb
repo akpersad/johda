@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026184342) do
+ActiveRecord::Schema.define(version: 20151101225241) do
 
   create_table "restaurants", force: :cascade do |t|
     t.integer  "merchant_id"
@@ -19,18 +19,22 @@ ActiveRecord::Schema.define(version: 20151026184342) do
     t.string   "address"
     t.string   "phone_number"
     t.string   "cuisine"
+    t.string   "logo"
+    t.integer  "rating"
+    t.integer  "price_rating"
+    t.string   "rating_img"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider"
-    t.string   "uid"
     t.string   "name"
-    t.string   "token"
-    t.string   "secret"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

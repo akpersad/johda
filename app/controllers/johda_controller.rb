@@ -7,7 +7,6 @@ class JohdaController < ApplicationController
 		if !params['address'].nil?
 			session['last_search'] = params['address']
 		end
-
 		@input = session['last_search']
 		@results = Getrestaurants.new(@input)
 
@@ -23,7 +22,6 @@ class JohdaController < ApplicationController
 		end
 
 		# @page = Restaurant.order(:name).page(params[:page]).per(8)
-		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 
 		i = 0
 		while i < @results.name.length
@@ -32,15 +30,21 @@ class JohdaController < ApplicationController
 				:name => @results.name[i], 
 				:address => @results.address[i], 
 				:cuisine => @results.cuisine[i], 
-				:phone_number => @results.phonenumber[i])
+				:phone_number => @results.phonenumber[i],
+				:logo => @results.merchant_logo[i],
+				:rating => @results.rating[i],
+				:rating_img => @results.rating_img[i],
+				:price_rating => @results.price_rating[i]
+				)
 			i+=1
 		end
-
+		
+		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
+		
 		if @results.name == []
 			flash[:success] = "<b>No results were returned. Please try again.</b>"
 			redirect_to ("/")
 		end
-		@result = Restaurant.order("name").page(params[:page])
 	end
 
 end

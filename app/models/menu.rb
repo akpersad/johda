@@ -8,7 +8,8 @@ class Menu
 	#63183 63341
 	def initialize(restID = 63341)
 		# Delivery api stuff
-		data = Delivery::Client.new 'YzhkZWRhMDg4NGY0MmRiZDhkNTRhMTg2MDM4NjMwN2Fk'
+		key = ENV["DELIVERY_KEY"]
+		data = Delivery::Client.new "#{key}"
 		@entire_menu = data.menu(restID)
 		# Menu information
 		@catagories = Array.new

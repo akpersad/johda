@@ -1,6 +1,13 @@
 class User < ActiveRecord::Base
-  def self.find_or_create_from_auth_hash(auth_hash)
-    #look up the user and create them
-    user = where(provider: auth_hash[:provider], uid: auth_hash[:uid]).first_or_create
-  end
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  
+  before_save { self.email = email.downcase}
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :email, presence: true, length: { maximum: 255 },
+    format: {  with: EMAIL_REGEX }, 
+    uniqueness: { case_sensitive: false}
+
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
 end
+
