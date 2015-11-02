@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
+
 
   resources :users
   # get    'help'    => 'static_pages#help'
