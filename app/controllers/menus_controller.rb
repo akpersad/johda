@@ -13,7 +13,7 @@ class MenusController < ApplicationController
 				@name = @results.name[i]
 			end
 		end
-
+		@merch_id = params.key("")
     render "index"
   end
 
