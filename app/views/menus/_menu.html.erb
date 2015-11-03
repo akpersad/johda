@@ -1,5 +1,5 @@
 		<div id="top">
-
+<%= @name %>
 	<% @menu.catagories.each_with_index do |catagory,x| %>
 		<div class='main-cat c-<%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
