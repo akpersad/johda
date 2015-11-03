@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
 
+
   def index
     @menu = Menu.new(params.key("").to_i)
     @menu.runner
@@ -14,7 +15,14 @@ class MenusController < ApplicationController
 		end
 
     render "index"
+  end
 
+
+  def order
+    
+    x = SortOrder.new(params['choices'])
+    x = x.saveOrder
+    
   end
 
 end

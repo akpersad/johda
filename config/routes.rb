@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 
   resources :users
+
   # get    'help'    => 'static_pages#help'
   # get    'about'   => 'static_pages#about'
   # get    'contact' => 'static_pages#contact'
@@ -10,6 +11,10 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+
+  # get 'users/new'
+  post "/order" => "menus#order"
 
   root to: 'johda#search'
 

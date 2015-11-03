@@ -36,5 +36,10 @@ class User < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  validates :password, presence: true, length: { minimum: 6 }
+
+  has_many :orders
+
 end
 
