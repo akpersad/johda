@@ -21,7 +21,7 @@
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
 body {
-  padding-top: 0px;
+  padding-top: 100px;
   padding-bottom: 30px;
 }
 
@@ -33,4 +33,9 @@ body {
 
 .theme-showcase > p > .btn {
   margin: 5px 0;
+}
+
+.navbar-inverse {
+	background-color: #0FF0C7;
+	border-color: #0FF0C7;
 }
