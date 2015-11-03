@@ -98,5 +98,26 @@
 		 		}
 		 	})
 		 })
+
+// submit portion
+	$('#submit').click(function(){
+
+		var array = []
+		$('[type="checkbox"]:checked').each(function(){
+			
+
+			var class_to_send = this.classList[0]
+			var name_to_send = this.name
+
+			array.push([class_to_send,name_to_send]);
+		})
+		debugger
+		$.post("/order", { 
+				'choices[]': array, 
+				authenticity_token: $('meta[name=csrf-token]').attr('content') 
+				}, function(html) {
+	  		 		$("#top").append(html)
+			});
+	})
 });
 </script>

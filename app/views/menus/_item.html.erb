@@ -1,5 +1,5 @@
 <br>
-Item: <%= item['name'] %> <%= check_box item['name'], item['name'], class:'itembox' %> <br>
+Item: <%= item['name'] %> <%= check_box item['name'], item['name']+' EXTRA '+item["price"].to_s, class:'itembox' %> <br>
 
 <%= item['description'] %>
 <br>

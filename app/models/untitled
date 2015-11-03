@@ -1,2 +1,0 @@
-
-@price_rating.partition{|x| x.is_a? String}.map(&:sort).flatten
