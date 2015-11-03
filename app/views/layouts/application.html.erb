@@ -7,14 +7,13 @@
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 </head>
-<body>
-  <div class="container">
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-<%= yield %>
-  </div>
-
-
-</body>
+      <%= yield %>
+    </div>
+  </body>
 </html>
