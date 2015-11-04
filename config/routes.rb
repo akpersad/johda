@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # get 'users/new'
   post "/order" => "menus#order"
+  get 'menus/order_history'
 
   root to: 'johda#search'
 
