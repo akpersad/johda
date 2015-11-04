@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :show]
   before_action :correct_user,   only: [:edit, :update, :show]
-
+  before_filter :check_if_logged_in, only: [:show, :edit, :update, :delete]
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def create
