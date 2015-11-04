@@ -20,11 +20,14 @@ class MenusController < ApplicationController
 
   def order
     if !session[:user_id].nil?
+      binding.pry
       x = SortOrder.new(params['choices'],session[:user_id])
       x.saveOrder
       redirect_to ('/menus/order_history')
     else
+      binding.pry
       x = SortOrder.new(params['choices'])
+      x.display_order
     end
   end
 

@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 20151103204209) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "name"
-    t.integer  "uniq_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "restaurants", force: :cascade do |t|

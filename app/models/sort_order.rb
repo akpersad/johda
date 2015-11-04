@@ -22,6 +22,9 @@ class SortOrder
     		groups << fix_order(array[1])
     	elsif array[0] == 'optionbox'
     		options << fix_order(array[1])
+    	elsif array[0] == 'rest'
+    		@rest_name = array[1]
+    		@merch_id = array[2].to_i
     	end
     end
 
@@ -41,27 +44,25 @@ class SortOrder
 
 	def saveOrder
 		iterateOrder
-		if user_id > 0
+		if user_id > 0		
+			restaurant = Restaurant.find_by_merchant_id(@merch_id)
 			user = User.find_by_id(user_id)
-			new_order = Order.create(:name=>'test',:user_id=>user.id)
+			new_order = Order.create(:name=>'test',:user_id=>user.id,:restaurant_id=>restaurant.id)
 			#
 			cat_array = []
 			catagories.each do |array|
 				if array.length > 1
+					#add code just in case price is in here
 				else
-					cat_array << Catagory.create(:title => array[0])
+					new_order.order_catagories.create(catagory: Catagory.create(:title => array[0]))
 				end
 			end
-			cat_array.each do |catagory_object|
-				new_order.order_catagories.create(catagory: catagory_object)
-			end
-			#
-			
+			binding.pry
+
 			items.each do |array|
 				if array.length == 1
 					Item.create(:order_id=> new_order.id,:name=>array[0].rstrip)
 				else
-					
 					Item.create(:order_id=> new_order.id,:name=>array[0].rstrip,:price => array[1].gsub(' ',''))
 				end
 			end
@@ -82,16 +83,9 @@ class SortOrder
 				end
 			end
 		end
+	end
 
-		
-			# pass in rest name, merch id and user id
-		 #order = Order.create(:name => 'lois',:uniq_id =>123)
-		 # pass in catagory, should make multiple for each catagory selected
-
-		 # catagory = Catagory.create(:title=>@order[0])
-		 # builds connection order.order_catagories.create(catagory: catagory)
-		
-		
+	def display_order
 	end
 
 

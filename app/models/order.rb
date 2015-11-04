@@ -5,4 +5,5 @@ class Order < ActiveRecord::Base
 	has_many :groups
 	has_many :options
 	belongs_to :user
+	belongs_to :restaurant
 end

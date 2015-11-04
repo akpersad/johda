@@ -1,6 +1,5 @@
 		<div id="top">
-Restaurant name: <%= @name %><br>
-Merchant_id: <%= @merch_id %>
+
 	<% @menu.catagories.each_with_index do |catagory,x| %>
 		<div class='main-cat c-<%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
@@ -26,4 +25,7 @@ Merchant_id: <%= @merch_id %>
 
 
 	<% end %>
+
+<div class='rest'><%= @name %> , <%= @merch_id %> </div>
+
 	</div>
