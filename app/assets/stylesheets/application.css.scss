@@ -43,3 +43,74 @@ body {
 #top {
 	padding-top: 10px;
 }
+
+body.welcome {
+	background: url("http://i.imgur.com/YQRk4xd.png") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: darkgrey;
+}
+
+.test {
+	background-color: black;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  top: 307px;
+  width: 100%;
+}
+
+.flex-item1 {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-size: cover;
+  padding: 15px;
+  width: 28%;
+  height: 210px;
+  margin-top: 10px;
+  line-height: 500%;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.flex-item2 {
+  background-image: url("http://i.imgur.com/vKczFLE.png");
+  background-size: cover;
+  padding: 15px;
+  width: 200px;
+  height: 200px;
+  margin-top: 10px;
+  line-height: 500%;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+  border-radius: 50%;
+}
+.flex-item3 {
+  background-image: url("http://i.imgur.com/5fXxbsK.png");
+  background-size: cover;
+  padding: 15px;
+  width: 30%;
+  height: 250px;
+  margin-top: 10px;
+  line-height: 500%;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
