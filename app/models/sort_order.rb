@@ -57,7 +57,7 @@ class SortOrder
 					new_order.order_catagories.create(catagory: Catagory.create(:title => array[0]))
 				end
 			end
-			binding.pry
+			
 
 			items.each do |array|
 				if array.length == 1

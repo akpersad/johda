@@ -20,7 +20,7 @@ class MenusController < ApplicationController
 
   def order
     if !session[:user_id].nil?
-      binding.pry
+      # binding.pry
       x = SortOrder.new(params['choices'],session[:user_id])
       x.saveOrder
       redirect_to ('/menus/order_history')
@@ -33,7 +33,8 @@ class MenusController < ApplicationController
 
   def order_history
    if !session[:user_id].nil?
-    @user = User.find_by_id(session[:user_id])
+    user = User.find_by_id(session[:user_id])
+    @user = user.orders.last
 
     render('order_history')
    end
