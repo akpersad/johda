@@ -10,6 +10,9 @@ class CreateRestaurants < ActiveRecord::Migration
         t.integer :rating
         t.integer :price_rating
         t.string :rating_img
+        t.string :time_needed
+        t.integer :delivery_charge
+        t.integer :min_order
         t.timestamps null: false
     end
   end
