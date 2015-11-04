@@ -34,7 +34,10 @@ class JohdaController < ApplicationController
 				:logo => @results.merchant_logo[i],
 				:rating => @results.rating[i],
 				:rating_img => @results.rating_img[i],
-				:price_rating => @results.price_rating[i]
+				:price_rating => @results.price_rating[i],
+				:time_needed => @results.time_needed[i],
+				:delivery_charge => @results.delivery_charge[i],
+				:min_order => @results.min_order[i]
 				)
 			i+=1
 		end
