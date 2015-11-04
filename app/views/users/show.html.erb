@@ -1,12 +1,16 @@
-  <%= render 'layouts/header' %>
-<br>
-<br>
-<br>
-<center>
 <% provide(:title, @user.name) %>
-<h1>
-  <%= @user.name %>
-</h1>
-</center>
+<body>
 
+<div id="header">
+  <center>
+    <h1> Hi, <%= @user.name %> </h1>
+  </center>
+</div>
+
+<div id="nav">
+  Favorites <br>
+  Edit Profile <br>
+  Order History<br>
+  Address<br>
+</div>
 

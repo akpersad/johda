@@ -189,4 +189,25 @@ class	Getrestaurants
 		end
 		@min_order
 	end
+
+	def time_needed
+		@time_needed = Array.new
+		if !@open_rest.nil?
+			@open_rest.each do |x|
+				@time_needed << x["ordering"]["time_needed"]
+			end
+		end
+		@time_needed.map! do |minutes|
+			if minutes == 0
+				"N/A"
+			elsif minutes % 60 == 0
+				"#{minutes/60} hour(s)"
+			elsif minutes/60 == 0
+					"#{minutes%60} minute(s)"
+			else
+				"#{minutes/60} hours(s) and #{minutes%60} minute(s)"
+			end
+		end
+		@time_needed
+	end
 end

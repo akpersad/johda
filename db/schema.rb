@@ -68,8 +68,11 @@ ActiveRecord::Schema.define(version: 20151103204209) do
     t.integer  "rating"
     t.integer  "price_rating"
     t.string   "rating_img"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "time_needed"
+    t.integer  "delivery_charge"
+    t.integer  "min_order"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
