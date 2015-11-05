@@ -31,6 +31,7 @@ gem 'kaminari'
 gem "figaro"
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 #User
 gem 'devise'
 gem 'omniauth'

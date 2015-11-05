@@ -3,6 +3,7 @@ class CreateOrderCatagories < ActiveRecord::Migration
     create_table :order_catagories do |t|
     	t.integer :order_id
     	t.integer :catagory_id
+    	
 
       t.timestamps null: false
     end

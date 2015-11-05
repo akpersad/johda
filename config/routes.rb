@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   # get 'users/new'
   post "/order" => "menus#order"
+  get 'menus/order_confirm'
+  post "/confirm" => "menus#confirm"
+
 
   root to: 'johda#search'
 
@@ -22,5 +25,7 @@ Rails.application.routes.draw do
   get '/johda/main'
   post 'menus/index'
   get "menus/index"
+  post 'johda/filter'
+  get 'johda/filter'
   # get 'johda', :to => 'johda#search'
 end

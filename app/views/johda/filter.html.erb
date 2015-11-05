@@ -1,11 +1,11 @@
 <center>
 <%if params["page"].nil?%>
-	<h4>1 - 8 of <%=@results.name.length%> Restaurants delivering to</h4>
-	<h4><strong><%= @results.search_address %></strong></h4>
+	<h4>1 - 8 of <%=session["results"].name.length%> Restaurants delivering to</h4>
+	<h4><strong><%= session["results"].search_address %></strong></h4>
 	<br/>
 <%else%>
-	<h4><%=(params["page"].to_i * 4) + 1%> - <%=(params["page"].to_i * 8)%> of <%=@results.name.length%> Restaurants delivering to</h4>
-	<h4><strong><%= @results.search_address %></strong></h4>
+	<h4><%=(params["page"].to_i * 4) + 1%> - <%=(params["page"].to_i * 8)%> of <%=session["results"].name.length%> Restaurants delivering to</h4>
+	<h4><strong><%= session["results"].search_address %></strong></h4>
 <%end%>
 
 </center>
@@ -62,12 +62,15 @@
 	</div>
 	<%= form_tag("/johda/filter") do %>
 	<div class="cuisine">
-		<% @cuisine.each_with_index do |e,i| %>
+		<% session["cuisine"].each_with_index do |e,i| %>
 			<%= e %><input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
 		<% end %>
 		<%= submit_tag "Filter" %>
 	</div>
 	<% end %>
+		<%= form_tag("/johda/main") do %>
+			<%= submit_tag "No Filter" %>
+		<%end%>
 
 <script>
 	$( document ).ready(function() {

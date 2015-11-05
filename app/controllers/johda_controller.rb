@@ -21,6 +21,16 @@ class JohdaController < ApplicationController
 			array
 		end
 
+		@cuisine = []
+
+		@results.cuisine.each do |c|
+			c.each do |e|
+				@cuisine << e
+			end
+		end
+		@cuisine.uniq!
+		@cuisine = @cuisine.sort
+
 		# @page = Restaurant.order(:name).page(params[:page]).per(8)
 
 		i = 0
@@ -43,11 +53,51 @@ class JohdaController < ApplicationController
 		end
 		
 		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
-		
+
+		session["results"] = @results
+		session["cuisine"] = @cuisine
+		session["page"] = @page
+
 		if @results.name == []
 			flash[:danger] = "No results were returned. Please try again."
 			redirect_to ("/")
 		end
 	end
 
+	def filter
+		@index = []
+		test = []
+	
+
+		 params.keys.collect do |k|
+		 	k.split(" ")
+		 end.each do |a|
+		 	if a.length == 2
+		 		test<<params[a.join(' ')]
+		 	end
+		 end
+
+		session["results"].cuisine.each_with_index do |e,num|
+			test.each do |i|
+				if e.include?(i)
+					@index << num
+				end
+			end
+		end
+
+		def most_recent
+			array=[]
+			session["results"].name.each_with_index do |name, i|
+				@index.each do |e|
+					if Restaurant.find_by_name(name) && e == i
+						x = Restaurant.find_by_name(name)
+						array << x
+					end
+				end
+			end
+			array
+		end
+
+		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
+	end
 end

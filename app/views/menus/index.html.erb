@@ -11,6 +11,7 @@
 		$('.items').hide();
 		$('.groups').hide();
 		$('.options').hide();
+		$('#rest').hide();
 		 var $mainCatCheckboxes = $('.main-cat').find('input[type="checkbox"]')
 		 $mainCatCheckboxes.change(function (){ 
 		 	var current_class_shared = '.' + $(this).parent().parent().parent()[0].classList[1]
@@ -111,12 +112,13 @@
 
 			array.push([class_to_send,name_to_send]);
 		})
+		array.push([$('.rest').attr('class'),$('.rest').text()])
 		debugger
 		$.post("/order", { 
 				'choices[]': array, 
 				authenticity_token: $('meta[name=csrf-token]').attr('content') 
 				}, function(html) {
-	  		 		$("#top").append(html)
+	  		 		location.replace('/menus/order_confirm')
 			});
 	})
 });
