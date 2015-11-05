@@ -56,7 +56,7 @@ class JohdaController < ApplicationController
 			user = User.find_by_id(session[:user_id])
 			user.favorite_restaurants.create(:restaurant => restaurant)
 		end
-		redirect_to('/')
+		render nothing: true
 	end
 
 end

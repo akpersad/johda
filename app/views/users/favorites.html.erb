@@ -6,6 +6,13 @@
   </center>
 </div>
 
+<% @user.favorite_restaurants.each do |rest| %>
+<br>
+  <img src="<%= rest.restaurant.logo %>">
+  <%= rest.restaurant.name %>
+  <br>
+<%end%>
+
 <body>
   <div id="nav">
     <%= link_to "Profile", current_user %><br>  
