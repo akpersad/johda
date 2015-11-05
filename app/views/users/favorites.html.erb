@@ -1,16 +1,18 @@
 <% provide(:title, @user.name) %>
 
-<body>
 <div id="header">
   <center>
     <h1> <%= @user.name.split.first %>'s Favorites </h1>
   </center>
 </div>
 
-<div id="nav">
-  <%= link_to "Profile", current_user %><br>  
-  <%= link_to "Edit Profile", edit_user_path(current_user) %><br>  
-  <%= link_to "Favorites", favorites_path %><br>
-  <class="divider"><br>  
-  <%= link_to "Log out", logout_path, method: "delete" %>
-</div>
+<body>
+  <div id="nav">
+    <%= link_to "Profile", current_user %><br>  
+    <%= link_to "Edit Profile", edit_user_path(current_user) %><br>  
+    <%= link_to "Favorites", favorites_path %><br>
+    <class="divider"><br>  
+      <%= link_to "Log out", logout_path, method: "delete" %>
+    </class="divider">
+  </div>
+</body>
