@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   post 'menus/index'
   get "menus/index"
   post 'johda/filter'
+  get 'johda/filter'
   # get 'johda', :to => 'johda#search'
 end

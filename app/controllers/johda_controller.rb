@@ -66,12 +66,25 @@ class JohdaController < ApplicationController
 
 	def filter
 		@index = []
-		session["results"].cuisine.each_with_index do |e,i|
-			if e.include? params["cuisine"]
-				@index << i
+		test = []
+	
+
+		 params.keys.collect do |k|
+		 	k.split(" ")
+		 end.each do |a|
+		 	if a.length == 2
+		 		test<<params[a.join(' ')]
+		 	end
+		 end
+
+		session["results"].cuisine.each_with_index do |e,num|
+			test.each do |i|
+				if e.include?(i)
+					@index << num
+				end
 			end
 		end
-		
+
 		def most_recent
 			array=[]
 			session["results"].name.each_with_index do |name, i|

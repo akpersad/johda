@@ -34,16 +34,21 @@
 	<% end %>
 
 	<h4>Filter by:</h4>
+	<div class="show_hide">
+		<h5>Show/Hide<h5>
+	</div>
 	<%= form_tag("/johda/filter") do %>
+	<div class="cuisine">
 		<% session["cuisine"].each_with_index do |e,i| %>
-			<%= e %><input type="checkbox" name="cuisine" value="<%= e %>"><br>
+			<%= e %><input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
 		<% end %>
 		<%= submit_tag "Filter" %>
+		<%= form_tag("/johda/main") do %>
+			<%= submit_tag "No Filter" %>
+		<%end%>
+	</div>
 	<% end %>
 
-	<%= form_tag("/johda/main") do %>
-		<%= submit_tag "No Filter" %>
-	<%end%>
 
 <%=paginate @page%>
 </center>
@@ -52,5 +57,9 @@
 <script>
 	$( document ).ready(function() {
     $("[type='text']").hide()
+
+    $(".show_hide").click(function(){
+    	$(".cuisine").toggle()
+    })
 	});
 </script>
