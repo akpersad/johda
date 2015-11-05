@@ -17,6 +17,8 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
+
+ #CC6540
  */
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
@@ -40,6 +42,158 @@ body {
 	border-color: #46AF77;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+    color: #CC6540;
+}
+
 #top {
 	padding-top: 10px;
+}
+
+body.welcome {
+	background: url("http://i.imgur.com/YQRk4xd.png") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: #CC6540;
+  overflow: hidden;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+div {
+  box-sizing: border-box;
+}
+
+html, body, .page-container {
+  height: 110%;
+}
+
+.page-container {
+  -webkit-transition: padding 0.2s ease-in;
+          transition: padding 0.2s ease-in;
+  padding: 80px;
+  position: relative;
+  top: 10.6em;
+}
+.page-container.opened {
+  padding: 0;
+}
+.page-container.opened .flex-container .country:not(.active) {
+  opacity: 0;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
+}
+.page-container.opened .flex-container .country:not(.active) div {
+  opacity: 0;
+}
+.page-container.opened .flex-container .active:after {
+  -webkit-filter: grayscale(0%) !important;
+          filter: grayscale(0%) !important;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+@media all and (max-width: 100%) {
+  .flex-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 50%;
+  }
+}
+
+.country {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out;
+  cursor: pointer;
+  font-family: "Bree Serif", serif;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  text-shadow: 0 0 3px #000;
+}
+.country div {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  top: 50%;
+  text-align: center;
+  -webkit-transition: 0.1s;
+          transition: 0.1s;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-filter: none;
+          filter: none;
+}
+.country:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  -webkit-transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+.country:hover {
+  -webkit-box-flex: 6;
+  -webkit-flex-grow: 6;
+      -ms-flex-positive: 6;
+          flex-grow: 6;
+}
+.country:hover:after {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+@media all and (max-width: 100%) {
+  .country {
+    height: auto;
+  }
+}
+
+.netherlands:after {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-position: center;
+}
+
+.belgium:after {
+  background-image: url("http://i.imgur.com/vKczFLE.png");
+  background-position: center;
+}
+
+.france:after {
+  background-image: url("http://i.imgur.com/5fXxbsK.png");
+  background-position: center;
+}
+
+.germany:after {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-position: center;
+}
+
+.england:after {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-position: center;
 }
