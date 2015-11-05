@@ -57,6 +57,7 @@ body.welcome {
 	-o-background-size: cover;
 	background-size: cover;
 	color: #CC6540;
+  overflow: hidden;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
@@ -66,7 +67,6 @@ div {
 
 html, body, .page-container {
   height: 110%;
-  overflow: hidden;
 }
 
 .page-container {
