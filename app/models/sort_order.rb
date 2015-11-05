@@ -47,7 +47,7 @@ class SortOrder
 		if user_id > 0		
 			restaurant = Restaurant.find_by_merchant_id(@merch_id)
 			user = User.find_by_id(user_id)
-			new_order = Order.create(:name=>restaurant.name,:user_id=>user.id,:restaurant_id=>restaurant.id)
+			new_order = Order.create(:name=>restaurant.name,:user_id=>user.id,:restaurant_id=>restaurant.id,:complete=>0)
 			#
 			cat_array = []
 			catagories.each do |array|
@@ -88,7 +88,7 @@ class SortOrder
 	def display_order
 		iterateOrder
 		restaurant = Restaurant.find_by_merchant_id(@merch_id)
-			new_order = Order.create(:name=>restaurant.name,:restaurant_id=>restaurant.id)
+			new_order = Order.create(:name=>restaurant.name,:restaurant_id=>restaurant.id,:complete=>0)
 			#
 			cat_array = []
 			catagories.each do |array|

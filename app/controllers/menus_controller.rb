@@ -20,8 +20,10 @@ class MenusController < ApplicationController
 
   def order
     if !session[:user_id].nil?
+      
       x = SortOrder.new(params['choices'],session[:user_id])
       x.saveOrder
+     
     else
       x = SortOrder.new(params['choices'])
       x.display_order
@@ -31,16 +33,20 @@ class MenusController < ApplicationController
 
   def order_confirm
    if !session[:user_id].nil?
+    binding.pry
     user = User.find_by_id(session[:user_id])
-    @user = user.orders.last
+    binding.pry
+    @order = user.orders.last
     render('order_confirm')
   else
-    @user = Order.last
+    @order = Order.last
     render('order_confirm')
    end
   end
 
   def confirm
+    order = Order.find_by_id(params['order_id'])
+    order.update(:complete=>1)
     binding.pry
     
   end
