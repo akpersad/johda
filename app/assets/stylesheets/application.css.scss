@@ -217,3 +217,26 @@ div.transbox
   left: 9%;
   right: 9%;
 }
+
+.flex-container2 {
+  padding-top: 10px;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item_rest {
+  background: white;
+  width: 14%;
+  color: black;
+  font-size: .9em;
+  text-align: center;
+}

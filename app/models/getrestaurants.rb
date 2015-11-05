@@ -125,25 +125,25 @@ class	Getrestaurants
 		@rating_img = Array.new
 		@rating.each do |rate|
 			if rate >= 5
-				@rating_img << "http://i.imgur.com/kfZfAqz.png"
+				@rating_img << "http://i.imgur.com/LZTYIqp.png"
 			elsif rate == 4.5
-				@rating_img << "http://i.imgur.com/IWYguVS.png"
+				@rating_img << "http://i.imgur.com/R6zp2go.png"
 			elsif rate == 4
-				@rating_img << "http://i.imgur.com/1DWwykk.png"	
+				@rating_img << "http://i.imgur.com/77WHDtk.png"
 			elsif rate == 3.5
-				@rating_img << "http://i.imgur.com/UZysvEt.png"
+				@rating_img << "http://i.imgur.com/Gpq3FqZ.png"
 			elsif rate == 3
-				@rating_img << "http://i.imgur.com/BRmZNj5.png"
+				@rating_img << "http://i.imgur.com/PkabVUG.png"
 			elsif rate == 2.5
-				@rating_img << "http://i.imgur.com/oYBhO4V.png"
+				@rating_img << "http://i.imgur.com/RnDeEUK.png"
 			elsif rate == 2
 				@rating_img << "http://i.imgur.com/J8X1vzk.png"
 			elsif rate == 1.5
-				@rating_img << "http://i.imgur.com/H6MZGkJ.png"
+				@rating_img << "http://i.imgur.com/gOuYJhT.png"
 			elsif rate == 1
-				@rating_img << "http://i.imgur.com/4mr0qBY.png"
+				@rating_img << "http://i.imgur.com/5ov22ou.png"
 			else
-				@rating_img << "http://www.coutellerie-tourangelle.com/images/imagecache/fiche_article/1817643Product_Primary_Image_1297700022.jpg"
+				@rating_img << "http://i.imgur.com/lUor6hb.png"
 			end
 		end
 		@rating_img
@@ -203,9 +203,9 @@ class	Getrestaurants
 			elsif minutes % 60 == 0
 				"#{minutes/60} hour(s)"
 			elsif minutes/60 == 0
-					"#{minutes%60} minute(s)"
+					"#{minutes%60} minutes"
 			else
-				"#{minutes/60} hours(s) and #{minutes%60} minute(s)"
+				"#{minutes/60} hours(s) and #{minutes%60} minutes"
 			end
 		end
 		@time_needed

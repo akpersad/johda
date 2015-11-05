@@ -1,40 +1,60 @@
 <center>
-<h2>Delivering to: <%= @results.search_address %></h2>
-<h2>List of Restaurants</h2>	<br>
-		<% @page.each do |e| %>
-				<div id="<%= e.merchant_id %>" style="width: 60%;" >
- <%= form_tag("../menus/index") do %>
-				
-				<div style="float: left; width: 33%; text-align: center;">
-				<img src="<%= e.logo %>" width="100px" />
-				</div>
+<%if params["page"].nil?%>
+	<h4>1 - 8 of <%=@results.name.length%> Restaurants delivering to</h4>
+	<h4><strong><%= @results.search_address %></strong></h4>
+	<br/>
+<%else%>
+	<h4><%=(params["page"].to_i * 4) + 1%> - <%=(params["page"].to_i * 8)%> of <%=@results.name.length%> Restaurants delivering to</h4>
+	<h4><strong><%= @results.search_address %></strong></h4>
+<%end%>
 
-				<div style="float: left; width: 34%; text-align: center;">
-				<strong><%= e.name %></strong><br>
+</center>
+	<% @page.each do |e| %>
+		<div id="<%= e.merchant_id %>" >
+			 <%= form_tag("../menus/index") do %>
+			<ul class="flex-container2">
+							
+			  <li class="flex-item_rest">
+				<img src="<%= e.logo %>" width="80px" />
+			  </li>
+							
+			  <li class="flex-item_rest" >
+			  	<strong><%= e.name %></strong><br>
 				<%= e.address %><br>
 				<%= e.phone_number %><br>
-				<img src="<%= e.rating_img %>" /><br>
-				Time Needed: <%= e.time_needed %><br>
+			  </li>
+							
+			  <li class="flex-item_rest" style="line-height: 700%;text-align: center;">
+				<img src="<%= e.rating_img %>"/><br>
+			  </li>
+
+			  <li class="flex-item_rest">
+				Cuisine: <%= e.cuisine[1...-1] %><br>
+			  </li>
+							
+			  <li class="flex-item_rest">
+				Est. Delivery: <%= e.time_needed %><br>
+			  </li>
+
+			  <li class="flex-item_rest">
 				Delivery Charge: $<%= e.delivery_charge %><br>
 				Minimum Order: $<%= e.min_order %><br>
-				</div>
-
-				<div style="float: left; width: 33%;">
-				<br/>
-				<br/>
+			  </li>
+							
+			  <li class="flex-item_rest">
 				<%= text_field_tag("#{e.merchant_id}")%>
 				<%= submit_tag "Menu" %>
-				<br><br>
-				</div>
+			  </li>
 
-				 <br style="clear: left;" />
-				<br/>
-		<% end%>
-				</div>
+			</ul>
+			 <% end%>
+			 <hr style="margin-top: 4px; margin-bottom: 4px;">
+		</div>
 	<% end %>
-<%=paginate @page%>
-</center>
 
+<center>
+	<%=paginate @page%>
+</center>
 
 <script>
 	$( document ).ready(function() {
