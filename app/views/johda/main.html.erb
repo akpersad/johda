@@ -30,6 +30,13 @@
 				 <br style="clear: left;" />
 				<br/>
 		<% end%>
+
+		<div class="okay" style="float: left; width: 33%;">
+				<%= e.id %>
+				</div>
+
+
+
 				</div>
 	<% end %>
 <%=paginate @page%>
@@ -39,5 +46,18 @@
 <script>
 	$( document ).ready(function() {
     $("[type='text']").hide()
+
+    $('.okay').click(function(){
+		var restId = parseInt($(this).text())
+
+		$.post("/johda/save_favs", { 
+				favorite: restId, 
+				authenticity_token: $('meta[name=csrf-token]').attr('content') 
+				});
+
 	});
+
+
+
+	})
 </script>
