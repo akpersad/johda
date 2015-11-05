@@ -55,9 +55,7 @@ class JohdaController < ApplicationController
 			restaurant = Restaurant.find_by_id(params['favorite'])
 			user = User.find_by_id(session[:user_id])
 			user.favorite_restaurants.create(:restaurant => restaurant)
-			binding.pry
 		end
-binding.pry
 		redirect_to('/')
 	end
 
