@@ -1,4 +1,4 @@
-<body class="container welcome">
+<body class="welcome">
 <center>
 <h1>JOHDA DELIVERY</h1>
 <br/>
@@ -11,18 +11,23 @@
 	<%= flash[:success].html_safe unless flash[:success].blank? %><br>
 		
 
-	<div class="test">
-	<ul class="flex-container">
-	  <li class="flex-item1">
-	  	1
-	  </li>
-	  <li class="flex-item2">
-	  	2
-	  </li>
-	  <li class="flex-item3">
-	  	3
-	  </li>
-	</ul>
-	</div>
+<div class="page-container">
+  <div class="flex-container">
+    <div class="country netherlands" style= "height:150px;"><div>Netherlands</div></div>
+    <div class="country belgium"><div>Belgium</div></div>
+    <div class="country france"><div>France</div></div>
+    <div class="country germany"><div>Germany</div></div>
+    <div class="country england"><div>England</div></div>
+  </div>
+</div>
+
+
 </center>
 </body>
+
+<script>
+	$(".country").click(function() {
+  $(this).toggleClass("active");
+  $(".page-container").toggleClass("opened");
+});
+</script>

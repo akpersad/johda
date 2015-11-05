@@ -53,64 +53,139 @@ body.welcome {
 	color: darkgrey;
 }
 
-.test {
-	background-color: black;
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+div {
+  box-sizing: border-box;
+}
+
+html, body, .page-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-container {
+  -webkit-transition: padding 0.2s ease-in;
+          transition: padding 0.2s ease-in;
+  padding: 80px;
+}
+.page-container.opened {
+  padding: 0;
+}
+.page-container.opened .flex-container .country:not(.active) {
+  opacity: 0;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
+}
+.page-container.opened .flex-container .country:not(.active) div {
+  opacity: 0;
+}
+.page-container.opened .flex-container .active:after {
+  -webkit-filter: grayscale(0%) !important;
+          filter: grayscale(0%) !important;
 }
 
 .flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  height: 100%;
+}
+@media all and (max-width: 900px) {
+  .flex-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 500px;
+  }
+}
+
+.country {
   position: relative;
-  top: 307px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out;
+  cursor: pointer;
+  font-family: "Bree Serif", serif;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  text-shadow: 0 0 3px #000;
+}
+.country div {
+  position: absolute;
   width: 100%;
+  z-index: 10;
+  top: 50%;
+  text-align: center;
+  -webkit-transition: 0.1s;
+          transition: 0.1s;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-filter: none;
+          filter: none;
+}
+.country:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  -webkit-transition: 0.5s ease-in-out;
+          transition: 0.5s ease-in-out;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+.country:hover {
+  -webkit-box-flex: 6;
+  -webkit-flex-grow: 6;
+      -ms-flex-positive: 6;
+          flex-grow: 6;
+}
+.country:hover:after {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+@media all and (max-width: 900px) {
+  .country {
+    height: auto;
+  }
 }
 
-.flex-item1 {
+.netherlands:after {
   background-image: url("http://i.imgur.com/WsO6B5A.png");
-  background-size: cover;
-  padding: 15px;
-  width: 28%;
-  height: 210px;
-  margin-top: 10px;
-  line-height: 500%;
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
-  text-align: center;
-  border-radius: 10px;
+  background-position: center;
 }
 
-.flex-item2 {
-  background-image: url("http://i.imgur.com/vKczFLE.png");
-  background-size: cover;
-  padding: 15px;
-  width: 200px;
-  height: 200px;
-  margin-top: 10px;
-  line-height: 500%;
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
-  text-align: center;
-  border-radius: 50%;
+.belgium:after {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-position: center;
 }
-.flex-item3 {
-  background-image: url("http://i.imgur.com/5fXxbsK.png");
-  background-size: cover;
-  padding: 15px;
-  width: 30%;
-  height: 250px;
-  margin-top: 10px;
-  line-height: 500%;
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
-  text-align: center;
+
+.france:after {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-position: center;
+}
+
+.germany:after {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-position: center;
+}
+
+.england:after {
+  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-position: center;
 }
