@@ -50,4 +50,6 @@ class JohdaController < ApplicationController
 		end
 	end
 
+	binding.pry
+
 end
