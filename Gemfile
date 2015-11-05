@@ -30,6 +30,8 @@ gem 'kaminari'
 # yaml for hiding keys
 gem "figaro"
 
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 
 #User
 gem 'devise'
