@@ -1,0 +1,53 @@
+
+<img src="<%= @user.restaurant.logo %>" alt="logo" height="42" width="42">
+
+<br>
+
+
+<%= @user.restaurant.name %>
+
+<br>
+
+<% @user.catagories.each do |cat| %>
+<%= cat.title %>
+<%end%>
+
+<br>
+
+
+<% @user.items.each do |item| %>
+<%= item.name %>
+<%end%>
+
+<br>
+
+
+
+<% @user.groups.each do |groups| %>
+<%= groups.name %>
+<%end%>
+
+<br>
+
+
+<% @user.options.each do |options| %>
+<%= options.name %>
+<%end%>
+
+<br>
+
+
+ <%= form_tag('/confirm', method: "post") do %>
+      <%= label_tag(:address, "Address:") %>
+       <%= text_field_tag(:address) %>
+       <%= label_tag(:apt, "Apt:") %>
+       <%= text_field_tag(:apt) %>
+       <%= label_tag(:city, "City:") %>
+       <%= text_field_tag(:city) %>
+       <%= label_tag(:state, "State:") %>
+       <%= text_field_tag(:state) %>
+       <%= label_tag(:zipcode, "Zipcode:") %>
+       <%= text_field_tag(:zipcode) %>
+        <%= hidden_field_tag(:order_id, value = "#{@user.restaurant.id}") %>
+      <%= submit_tag("Order") %>
+    <% end %>

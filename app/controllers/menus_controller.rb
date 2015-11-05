@@ -20,26 +20,29 @@ class MenusController < ApplicationController
 
   def order
     if !session[:user_id].nil?
-      binding.pry
       x = SortOrder.new(params['choices'],session[:user_id])
       x.saveOrder
     else
       x = SortOrder.new(params['choices'])
       x.display_order
     end
-    redirect_to ('/menus/order_history')
+    redirect_to ('/menus/order_confirm')
   end
 
-  def order_history
+  def order_confirm
    if !session[:user_id].nil?
     user = User.find_by_id(session[:user_id])
     @user = user.orders.last
-    render('order_history')
+    render('order_confirm')
   else
-    binding.pry
     @user = Order.last
-    render('order_history')
+    render('order_confirm')
    end
+  end
+
+  def confirm
+    binding.pry
+    
   end
 
 end
