@@ -17,7 +17,7 @@ module SessionsHelper
   end
 
   def deny_access
-    redirect_to login_path, :notice => "Please sign in first."
+    redirect_to login_path, :notice => "Please log in first."
   end
   
   #returning a user who is currently logged in

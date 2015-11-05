@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
-<body>
 
+<body>
 <div id="header">
   <center>
     <h1> Hi, <%= @user.name %> </h1>
@@ -8,9 +8,10 @@
 </div>
 
 <div id="nav">
-  Favorites <br>
-  Edit Profile <br>
-  Order History<br>
-  Address<br>
+  <%= link_to "Profile", current_user %><br>  
+  <%= link_to "Edit Profile", edit_user_path(current_user) %><br>  
+  <%= link_to "Favorites", favorites_path %><br>
+  <class="divider"><br>  
+  <%= link_to "Log out", logout_path, method: "delete" %>
 </div>
 
