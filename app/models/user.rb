@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :orders
+  has_many :favorite_restaurants
+  has_many :restaurants, through: :favorite_restaurants
 
 end
 

@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   get '/johda/main'
   post 'menus/index'
   get "menus/index"
+  post 'johda/save_favs'
   # get 'johda', :to => 'johda#search'
 end
