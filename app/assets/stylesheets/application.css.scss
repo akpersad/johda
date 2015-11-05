@@ -17,6 +17,8 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
+
+ #CC6540
  */
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
@@ -40,6 +42,10 @@ body {
 	border-color: #46AF77;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+    color: #CC6540;
+}
+
 #top {
 	padding-top: 10px;
 }
@@ -50,7 +56,7 @@ body.welcome {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	color: darkgrey;
+	color: #CC6540;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
@@ -59,7 +65,7 @@ div {
 }
 
 html, body, .page-container {
-  height: 100%;
+  height: 110%;
   overflow: hidden;
 }
 
@@ -67,6 +73,8 @@ html, body, .page-container {
   -webkit-transition: padding 0.2s ease-in;
           transition: padding 0.2s ease-in;
   padding: 80px;
+  position: relative;
+  top: 10.6em;
 }
 .page-container.opened {
   padding: 0;
@@ -93,14 +101,14 @@ html, body, .page-container {
   display: flex;
   height: 100%;
 }
-@media all and (max-width: 900px) {
+@media all and (max-width: 100%) {
   .flex-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
-    height: 500px;
+    height: 50%;
   }
 }
 
@@ -159,7 +167,7 @@ html, body, .page-container {
   -webkit-filter: grayscale(0%);
           filter: grayscale(0%);
 }
-@media all and (max-width: 900px) {
+@media all and (max-width: 100%) {
   .country {
     height: auto;
   }
@@ -171,12 +179,12 @@ html, body, .page-container {
 }
 
 .belgium:after {
-  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-image: url("http://i.imgur.com/vKczFLE.png");
   background-position: center;
 }
 
 .france:after {
-  background-image: url("http://i.imgur.com/WsO6B5A.png");
+  background-image: url("http://i.imgur.com/5fXxbsK.png");
   background-position: center;
 }
 

@@ -45,7 +45,7 @@ class JohdaController < ApplicationController
 		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 		
 		if @results.name == []
-			flash[:danger] = "<b>No results were returned. Please try again.</b>"
+			flash[:danger] = "No results were returned. Please try again."
 			redirect_to ("/")
 		end
 	end
