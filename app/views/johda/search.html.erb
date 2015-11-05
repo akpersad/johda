@@ -1,19 +1,22 @@
 <body class="welcome">
 <center>
-<h1>JOHDA DELIVERY</h1>
 <br/>
 <br/>
+<div class="transbox">
+<div id="search">
 	<%=form_tag("johda/main") do %>
 		Search Address:
 		<%= text_field_tag("address") %>
 		<%= submit_tag "search" %>
 	<% end %>
 	<%= flash[:success].html_safe unless flash[:success].blank? %><br>
+</div>
+</div>
 		
 
 <div class="page-container">
   <div class="flex-container">
-    <div class="country netherlands" style= "height:150px;"><div>Dumbo</div></div>
+    <div class="country netherlands" style= "height:210px; width:650px"><div>Dumbo</div></div>
     <div class="country belgium"><div>Midtown</div></div>
     <div class="country france"><div>Flushing</div></div>
   </div>

@@ -66,15 +66,16 @@ div {
 }
 
 html, body, .page-container {
-  height: 110%;
 }
 
 .page-container {
   -webkit-transition: padding 0.2s ease-in;
           transition: padding 0.2s ease-in;
   padding: 80px;
-  position: relative;
-  top: 10.6em;
+  position: absolute;
+  top: 59%;
+  left: 9%;
+  right: 9%;
 }
 .page-container.opened {
   padding: 0;
@@ -99,7 +100,6 @@ html, body, .page-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
 }
 @media all and (max-width: 100%) {
   .flex-container {
@@ -196,4 +196,24 @@ html, body, .page-container {
 .england:after {
   background-image: url("http://i.imgur.com/WsO6B5A.png");
   background-position: center;
+}
+
+div.transbox
+{
+  position: absolute;
+  top: 24%;
+  left: 34%;
+  right: 34%;
+  margin: 30px;
+  height: 100px;
+  width: 400px;
+  background-color: #0D0D0D;
+  opacity:0.775;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+#search {
+  position: absolute;
+  top: 37%;
+  left: 9%;
+  right: 9%;
 }
