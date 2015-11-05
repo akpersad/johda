@@ -3,7 +3,7 @@
 <body>
 <div id="header">
   <center>
-    <h1> Hi, <%= @user.name %> </h1>
+    <h1> <%= @user.name.split.first %>'s Favorites </h1>
   </center>
 </div>
 
@@ -14,4 +14,3 @@
   <class="divider"><br>  
   <%= link_to "Log out", logout_path, method: "delete" %>
 </div>
-
