@@ -50,6 +50,7 @@ class MenusController < ApplicationController
   def confirm
     @order = Order.find_by_id(params['order_id'])
     @order.update(:complete=>1)
+    @order.save
     
   end
 
