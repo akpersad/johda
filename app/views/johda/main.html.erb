@@ -29,7 +29,8 @@
 			  </li>
 
 			  <li class="flex-item_rest">
-				Cuisine: <%= e.cuisine[1...-1] %><br>
+				<strong>Cuisine: </strong><br>
+				<%= e.cuisine[1...-1] %><br>
 			  </li>
 							
 			  <li class="flex-item_rest">
@@ -41,11 +42,11 @@
 				Minimum Order: $<%= e.min_order %><br>
 			  </li>
 							
-			  <li class="flex-item_rest">
+			  <li class="flex-item_rest" >
 				<%= text_field_tag("#{e.merchant_id}")%>
 				<%= submit_tag "Menu" %>
 				<div class="okay">
-					Add to Favorites Button
+					Add to Favorites
 				</div>
 			  </li>
 
