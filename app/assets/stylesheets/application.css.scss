@@ -240,3 +240,21 @@ div.transbox
   font-size: .9em;
   text-align: center;
 }
+
+.restaurants {
+  position: relative;
+  left: 5%;
+}
+
+.cuisine {
+  position: absolute;
+  top: 36%;
+  left: 3%;
+}
+
+.show_hide {
+  position: absolute; 
+  top:31%;
+  left:3%;
+  font-style: italic;
+}

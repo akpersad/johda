@@ -10,7 +10,7 @@
 
 </center>
 	<% @page.each do |e| %>
-		<div id="<%= e.merchant_id %>" >
+		<div class="restaurants" id="<%= e.merchant_id %>" >
 			 <%= form_tag("../menus/index") do %>
 			<ul class="flex-container2">
 							
@@ -48,7 +48,7 @@
 
 			</ul>
 			 <% end%>
-			 <hr style="margin-top: 4px; margin-bottom: 4px;">
+			 <hr style="margin-top: 4px; margin-bottom: 4px;width: 93%;">
 		</div>
 	<% end %>
 
@@ -56,7 +56,7 @@
 	<%=paginate @page%>
 </center>
 
-	<h4>Filter by:</h4>
+	<h4 style="position: absolute; top:27%;left:3%;">Filter by:</h4>
 	<div class="show_hide">
 		<h5>Show/Hide<h5>
 	</div>
