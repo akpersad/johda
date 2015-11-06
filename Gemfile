@@ -29,6 +29,8 @@ gem 'kaminari'
 
 # yaml for hiding keys
 gem "figaro"
+#
+gem 'acts_as_commentable'
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 

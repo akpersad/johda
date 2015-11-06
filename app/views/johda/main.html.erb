@@ -44,12 +44,18 @@
 			  <li class="flex-item_rest">
 				<%= text_field_tag("#{e.merchant_id}")%>
 				<%= submit_tag "Menu" %>
+				<div class="okay">
+					Add to Favorites Button
+				</div>
 			  </li>
 
-			</ul>
-			 <% end%>
-			 <hr style="margin-top: 4px; margin-bottom: 4px;width: 93%;">
-		</div>
+			 
+
+
+		</ul>
+	<% end %>
+	<hr style="margin-top: 4px; margin-bottom: 4px;width: 93%;">
+	</div>
 	<% end %>
 
 <center>
@@ -65,16 +71,29 @@
 		<% @cuisine.each_with_index do |e,i| %>
 			<%= e %><input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
 		<% end %>
+		<br/>
 		<%= submit_tag "Filter" %>
 	</div>
 	<% end %>
 
 <script>
 	$( document ).ready(function() {
-    $("[type='text']").hide()
+    	$("[type='text']").hide()
 
-    $(".show_hide").click(function(){
-    	$(".cuisine").toggle()
-    })
+		    $(".show_hide").click(function(){
+		    	$(".cuisine").toggle()
+		    })
+
+    $('.okay').click(function(){
+		var restId = parseInt($(this).text())
+
+		$.post("/johda/save_favs", { 
+				favorite: restId, 
+				authenticity_token: $('meta[name=csrf-token]').attr('content') 
+				});
 	});
+
+
+
+	})
 </script>

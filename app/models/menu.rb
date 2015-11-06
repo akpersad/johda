@@ -1,7 +1,7 @@
 require 'delivery'
 require 'pry'
 
-class Menu 
+class Menu
 
 
 	attr_reader :entire_menu, :catagories, :items, :groups, :options

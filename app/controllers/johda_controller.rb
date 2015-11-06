@@ -100,4 +100,14 @@ class JohdaController < ApplicationController
 
 		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 	end
+
+	def save_favs
+		if !session[:user_id].nil?
+			restaurant = Restaurant.find_by_id(params['favorite'])
+			user = User.find_by_id(session[:user_id])
+			user.favorite_restaurants.create(:restaurant => restaurant)
+		end
+		render nothing: true
+	end
+
 end
