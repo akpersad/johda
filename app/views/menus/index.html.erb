@@ -3,6 +3,35 @@
 
 
   <input id='submit' type="submit" value="Submit">
+<br>
+<br>
+<br>
+<br>
+  <%@comment.comments.each do |comment|%>
+  <%if user = User.find_by_id(comment.user_id)%>
+  <%   user = User.find_by_id(comment.user_id)%>
+  	   Account: <%=user.name%> 
+  <%else%>
+  		<%=@guest%>
+  <%end%>
+  <br>
+  <br>
+
+  title:<%= comment.title%>
+  <br>
+  Comment:<%= comment.comment%>
+  <%end%>
+ <br>
+
+  <%= form_tag("/menus/comment") do %>
+
+  <%= text_field_tag("title")%>
+  <%= text_field_tag("comment")%>
+  <%=hidden_field_tag :merch_id,"#{@comment.merch_id}"%>
+  <%=hidden_field_tag :comment_id,"#{@comment.id}"%>
+  <%= submit_tag "comment" %>
+
+  <% end%>
 
 
 
