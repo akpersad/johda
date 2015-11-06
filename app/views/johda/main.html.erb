@@ -47,6 +47,7 @@
 				<%= submit_tag "Menu" %>
 				<div class="okay">
 					Add to Favorites
+					<div id="<%=e.id%>"> </div>
 				</div>
 			  </li>
 
@@ -86,7 +87,7 @@
 		    })
 
     $('.okay').click(function(){
-		var restId = parseInt($(this).text())
+		var restId = parseInt($(this).children()[0].id)
 
 		$.post("/johda/save_favs", { 
 				favorite: restId, 

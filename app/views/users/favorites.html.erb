@@ -8,7 +8,6 @@
 
 <% @user.favorite_restaurants.each do |rest| %>
 <br>
-<%binding.pry%>
   <img src="<%= rest.restaurant.logo %>">
   <%= rest.restaurant.name %>
   <br>
