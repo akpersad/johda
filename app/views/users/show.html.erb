@@ -1,5 +1,14 @@
 <% provide(:title, @user.name) %>
 
+<div id="nav">
+  <%= link_to "Profile", current_user %><br>  
+  <%= link_to "Edit Profile", edit_user_path(current_user) %><br>  
+  <%= link_to "Favorites", favorites_path %><br>
+  <class="divider"><br>  
+  <%= link_to "Log out", logout_path, method: "delete" %>
+  </class="divider">
+</div>
+
 <body>
 <div id="header">
   <center>
@@ -7,11 +16,60 @@
   </center>
 </div>
 
-<div id="nav">
-  <%= link_to "Profile", current_user %><br>  
-  <%= link_to "Edit Profile", edit_user_path(current_user) %><br>  
-  <%= link_to "Favorites", favorites_path %><br>
-  <class="divider"><br>  
-  <%= link_to "Log out", logout_path, method: "delete" %>
+<div class="favorites">
+<% @user.favorite_restaurants.each do |rest| %>
+<br>
+  <img src="<%= rest.restaurant.logo %>">
+  <%= rest.restaurant.name %>
+  <br>
+<%end%>
 </div>
+
+<%@user.name%> Order History <br>
+<% @user.orders.each do |order|%>
+<% if order.complete %>
+  <%= order.name %>
+    <% order.catagories.each do |cat| %>
+    <%= cat.title %>
+    <%end%>
+    <br>
+    <% order.items.each do |item| %>
+    <%= item.name %>
+    <%end%>
+    <br>
+    <% order.groups.each do |group| %>
+    <%= group.name %>
+    <%end%>
+    <% order.options.each do |option| %>
+    <%= option.name %>
+    <%end%>
+<% else %>
+<br>
+<br>
+Order not completed yet
+<br>
+  <%= order.name %>
+    <% order.catagories.each do |cat| %>
+    <%= cat.title %>
+    <%end%>
+    <br>
+    <% order.items.each do |item| %>
+    <%= item.name %>
+    <%end%>
+    <br>
+    <% order.groups.each do |group| %>
+    <%= group.name %>
+    <%end%>
+    <% order.options.each do |option| %>
+    <%= option.name %>
+    <%end%>
+<%end%>
+
+
+
+
+
+
+<%end%>
+</body>
 

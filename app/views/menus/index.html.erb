@@ -2,36 +2,43 @@
 <%= render 'menu' %>
 
 
-  <input id='submit' type="submit" value="Submit">
+  <input id='submit' type="submit" value="Submit" class="btn btn-default">
 <br>
 <br>
 <br>
 <br>
-  <%@comment.comments.each do |comment|%>
-  <%if user = User.find_by_id(comment.user_id)%>
-  <%   user = User.find_by_id(comment.user_id)%>
-  	   Account: <%=user.name%> 
-  <%else%>
-  		<%=@guest%>
-  <%end%>
-  <br>
-  <br>
+<div class="review">  
+  <div class="col-md-6">
+	  <%@comment.comments.each do |comment|%>
+		  <%if user = User.find_by_id(comment.user_id)%>
+		  <%   user = User.find_by_id(comment.user_id)%>
+		  	  Account: <%=user.name%> 
+		  <%else%>
+		  		<%=@guest%>
+		  <%end%>
+		  <br>
+		  <br>
 
-  title:<%= comment.title%>
-  <br>
-  Comment:<%= comment.comment%>
-  <%end%>
- <br>
-
-  <%= form_tag("/menus/comment") do %>
-
-  <%= text_field_tag("title")%>
-  <%= text_field_tag("comment")%>
-  <%=hidden_field_tag :merch_id,"#{@comment.merch_id}"%>
-  <%=hidden_field_tag :comment_id,"#{@comment.id}"%>
-  <%= submit_tag "comment" %>
-
-  <% end%>
+		  title:<%= comment.title%>
+		  <br>
+		  Comment:<%= comment.comment%>
+		  <%end%>
+		 <br>
+		 	<h2>Rate & Review</h2>
+		 <br>
+		  <%= form_tag("/menus/comment") do %>
+		  <label for="title">Title</label>
+		  <%= text_field_tag("title")%>
+		  <br>
+		  <label for="comment">Review</label>
+		  <%= text_area_tag("comment")%>
+		  <%=hidden_field_tag :merch_id,"#{@comment.merch_id}"%>
+		  <%=hidden_field_tag :comment_id,"#{@comment.id}"%>
+		  <br>
+		  <%= submit_tag "Submit Review", class: "btn btn-default"%>
+		<% end%>
+	</div>
+</div>
 
 
 
