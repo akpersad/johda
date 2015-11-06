@@ -34,7 +34,8 @@
 			  </li>
 							
 			  <li class="flex-item_rest">
-				Est. Delivery: <%= e.time_needed %><br>
+				<strong>Est. Delivery: </strong>
+				<br><%= e.time_needed %><br>
 			  </li>
 
 			  <li class="flex-item_rest">
@@ -71,7 +72,7 @@
 	<%= form_tag("/johda/filter") do %>
 	<div class="cuisine">
 		<% @cuisine.each_with_index do |e,i| %>
-			<%= e %><input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
+			<%= e %>  <input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
 		<% end %>
 		<br/>
 		<%= submit_tag "Filter" %>
@@ -93,6 +94,10 @@
 				favorite: restId, 
 				authenticity_token: $('meta[name=csrf-token]').attr('content') 
 				});
+
+		alert("Save");
+
+		$
 	});
 
 
