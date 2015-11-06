@@ -20,7 +20,7 @@
 <% @user.favorite_restaurants.each do |rest| %>
 <br>
   <img src="<%= rest.restaurant.logo %>">
-  <%= rest.restaurant.name %>
+  <%= rest.restaurant.name %> <div class="remove" id="<%=rest.id%>"> remove</div>
   <br>
 <%end%>
 </div>
@@ -72,4 +72,23 @@ Order not completed yet
 
 <%end%>
 </body>
+
+<script>
+
+  $( document ).ready(function(){
+
+    $('.remove').click(function(){
+      
+      var restId = this.id
+
+      $.post("/johda/remove_favs", { 
+        'rest': restId, 
+        authenticity_token: $('meta[name=csrf-token]').attr('content') 
+        });
+    })
+
+  });
+  
+
+</script>
 

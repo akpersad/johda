@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   get 'johda/filter'
   post 'menus/comment'
   post 'johda/save_favs'
+  post 'johda/remove_favs'
   # get 'johda', :to => 'johda#search'
 end
