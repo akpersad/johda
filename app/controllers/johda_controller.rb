@@ -103,7 +103,8 @@ class JohdaController < ApplicationController
 
 	def save_favs
 		if !session[:user_id].nil?
-			restaurant = Restaurant.find_by_id(params['favorite'])
+			binding.pry
+			restaurant = Restaurant.find_by_id(params['favorite'].to_i)
 			user = User.find_by_id(session[:user_id])
 			user.favorite_restaurants.create(:restaurant => restaurant)
 		end
