@@ -6,12 +6,12 @@
 
 		<% @menu.items[x].each_with_index do |item,y| %>	
 
-			<div class='items c-<%=x%> c-<%=x%>-i-<%=y%>' style='text-align:center;'> <%= render partial: 'item', locals: {item: item} %> </div>
+			<div class='items c-<%=x%> c-<%=x%>-i-<%=y%>' style="text-align: center; display: block;padding-top: 8px;"> <%= render partial: 'item', locals: {item: item} %> </div>
 
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div class='groups c-<%=x%>-i-<%=y%> c-<%=x%>-i-<%=y%>-g-<%=z%>' style="background:#D3D3D3;"> <%= render partial: 'group', locals: {group: group} %> </div> 
+				<div class='groups c-<%=x%>-i-<%=y%> c-<%=x%>-i-<%=y%>-g-<%=z%>' style="background:#D3D3D3;margin-bottom:3px;text-align:center;"> <%= render partial: 'group', locals: {group: group} %> </div> 
 
 
 				<% if group.class != String%>
