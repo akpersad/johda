@@ -89,8 +89,8 @@ class MenusController < ApplicationController
     else
       @comment = MenuComment.create(:merch_id=>@merch_id.to_i) 
     end
-
-    render "index"
-  end
+    
+    redirect_to('/')  
+end
 
 end

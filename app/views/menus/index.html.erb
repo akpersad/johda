@@ -23,16 +23,7 @@
   <%end%>
  <br>
 
-  <%= form_tag("/menus/comment") do %>
-
-  <%= text_field_tag("title")%>
-  <%= text_field_tag("comment")%>
-  <%=hidden_field_tag :merch_id,"#{@comment.merch_id}"%>
-  <%=hidden_field_tag :comment_id,"#{@comment.id}"%>
-  <%= submit_tag "comment" %>
-
-  <% end%>
-
+ 
 
 
 <script>

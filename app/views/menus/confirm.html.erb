@@ -47,4 +47,15 @@
 	<%end%>
 <%end%>
 
+ <%= form_tag("/menus/comment") do %>
+
+  <%= text_field_tag("title")%>
+  <%= text_field_tag("comment")%>
+  <%=hidden_field_tag :merch_id,"#{@order.restaurant.merchant_id}"%>
+
+  <%= submit_tag "comment" %>
+
+  <% end%>
+
+
 <br>
