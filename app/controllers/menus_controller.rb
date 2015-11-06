@@ -48,8 +48,8 @@ class MenusController < ApplicationController
   end
 
   def confirm
-    order = Order.find_by_id(params['order_id'])
-    order.update(:complete=>1)
+    @order = Order.find_by_id(params['order_id'])
+    @order.update(:complete=>1)
     
   end
 
