@@ -149,6 +149,7 @@
 			array.push([class_to_send,name_to_send]);
 		})
 		array.push([$('.rest').attr('class'),$('.rest').text()])
+
 		$.post("/order", { 
 				'choices[]': array, 
 				authenticity_token: $('meta[name=csrf-token]').attr('content') 

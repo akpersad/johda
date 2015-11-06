@@ -32,5 +32,7 @@ Rails.application.routes.draw do
   post 'menus/comment'
   post 'johda/save_favs'
   post 'menus/confirm'
+  post 'johda/remove_favs'
+
   # get 'johda', :to => 'johda#search'
 end
