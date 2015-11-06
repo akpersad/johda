@@ -35,12 +35,12 @@
         <%@user.name%>  
         <% @user.orders.each do |order|%>
           <% if order.complete %>
-            <%= order.name %>
+              <h5><%= order.name %></h5>
+              <img src="<%= order.restaurant.logo%>">
+              <br>
               <% order.catagories.each do |cat| %>
                 <%= cat.title %>
               <%end%>
-            <br>
-              <img src="<%= order.restaurant.logo%>">
             <br>
               <% order.items.each do |item| %>
                 <%= item.name %>
