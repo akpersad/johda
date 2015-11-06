@@ -19,25 +19,7 @@
 		  <%end%>
 		  <br>
 		  <br>
-
-		  title:<%= comment.title%>
-		  <br>
-		  Comment:<%= comment.comment%>
-		  <%end%>
-		 <br>
-		 	<h2>Rate & Review</h2>
-		 <br>
-		  <%= form_tag("/menus/comment") do %>
-		  <label for="title">Title</label>
-		  <%= text_field_tag("title")%>
-		  <br>
-		  <label for="comment">Review</label>
-		  <%= text_area_tag("comment")%>
-		  <%=hidden_field_tag :merch_id,"#{@comment.merch_id}"%>
-		  <%=hidden_field_tag :comment_id,"#{@comment.id}"%>
-		  <br>
-		  <%= submit_tag "Submit Review", class: "btn btn-default"%>
-		<% end%>
+		<%end%>
 	</div>
 </div>
 
