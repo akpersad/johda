@@ -41,11 +41,12 @@
 				Minimum Order: $<%= e.min_order %><br>
 			  </li>
 							
-			  <li class="flex-item_rest">
+			  <li class="flex-item_rest" >
 				<%= text_field_tag("#{e.merchant_id}")%>
 				<%= submit_tag "Menu" %>
 				<div class="okay">
-					Add to Favorites Button
+					Add to Favorites
+					<div id="<%=e.id%>"> </div>
 				</div>
 			  </li>
 
@@ -69,7 +70,7 @@
 	<%= form_tag("/johda/filter") do %>
 	<div class="cuisine">
 		<% session["cuisine"].each_with_index do |e,i| %>
-			<%= e %><input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
+			<%= e %>  <input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
 		<% end %>
 		<br/>
 		<%= submit_tag "Filter" %>
@@ -84,21 +85,17 @@
 <script>
 	$( document ).ready(function() {
     	$("[type='text']").hide()
-
 		    $(".show_hide").click(function(){
 		    	$(".cuisine").toggle()
 		    })
-
     $('.okay').click(function(){
-		var restId = parseInt($(this).text())
-
+		var restId = parseInt($(this).children()[0].id)
 		$.post("/johda/save_favs", { 
 				favorite: restId, 
 				authenticity_token: $('meta[name=csrf-token]').attr('content') 
 				});
+		alert("Save");
+		$
 	});
-
-
-
 	})
 </script>
