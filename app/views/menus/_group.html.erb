@@ -1,9 +1,6 @@
 <br>
 <% if group.class != String %>
 	<strong><%= group['name'] %> <%= check_box group['name'], group['name'], class:'groupbox' %> </strong>
-	<%= group['min_selection'] %>
-	
-	<%= group['max_selection'] %>
 <% else %>
 	<%='no additional options' %>
 <%end%>

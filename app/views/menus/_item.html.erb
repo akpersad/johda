@@ -1,9 +1,14 @@
 <br>
-Item: <%= item['name'] %> <%= check_box item['name'], item['name']+' EXTRA '+item["price"].to_s, class:'itembox' %> <br>
+<strong><%= item['name'] %></strong> <%= check_box item['name'], item['name']+' EXTRA '+item["price"].to_s, class:'itembox' %> <br>
 
-<%= item['description'] %>
+<i><%= item['description'] %></i>
 <br>
-<p> min quantity:<%= item["min_qty"] %> <br>
-max quantity:<%= item["max_qty"] %> </p>
-Price:<%= item["price"] %>
+Price: <%= number_to_currency(item["price"]) %>
+
+<hr style="
+    height: 1px;
+    background: lightgray;
+    margin-bottom: 0px;
+    margin-top: 3px;
+">
 

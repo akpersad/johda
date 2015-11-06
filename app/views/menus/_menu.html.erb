@@ -1,17 +1,17 @@
 		<div id="top">
 
 	<% @menu.catagories.each_with_index do |catagory,x| %>
-		<div class='main-cat c-<%=x%>'> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
+		<div class='main-cat c-<%=x%>' style="background:lightgray;margin-bottom:3px;"> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
 
 		<% @menu.items[x].each_with_index do |item,y| %>	
 
-			<div class='items c-<%=x%> c-<%=x%>-i-<%=y%>'> <%= render partial: 'item', locals: {item: item} %> </div>
+			<div class='items c-<%=x%> c-<%=x%>-i-<%=y%>' style='text-align:center;'> <%= render partial: 'item', locals: {item: item} %> </div>
 
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div class='groups c-<%=x%>-i-<%=y%> c-<%=x%>-i-<%=y%>-g-<%=z%>'> <%= render partial: 'group', locals: {group: group} %> </div> 
+				<div class='groups c-<%=x%>-i-<%=y%> c-<%=x%>-i-<%=y%>-g-<%=z%>' style="background:#D3D3D3;"> <%= render partial: 'group', locals: {group: group} %> </div> 
 
 
 				<% if group.class != String%>
