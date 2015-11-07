@@ -5,9 +5,9 @@
 <div class="transbox">
 <div id="search">
 	<%=form_tag("johda/main") do %>
-		Search Address:
+		<label for="address">Delivery</label>
 		<%= text_field_tag("address") %>
-		<%= submit_tag "search" %>
+		<%= submit_tag "Search" %>
 	<% end %>
 	<%= flash[:success].html_safe unless flash[:success].blank? %><br>
 </div>
@@ -24,7 +24,9 @@
   </div>
 </div>
 
-
+<div class="country-text">
+<h3>Popular Cities</h3>
+</div>
 </center>
 </body>
 

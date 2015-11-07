@@ -1,9 +1,7 @@
 <% provide(:title, @user.name) %>
 
-<div id="nav", class="sidebar">
-  <%= link_to "Profile", current_user %><br>  
+<div id="nav", class="sidebar"> 
   <%= link_to "Edit Profile", edit_user_path(current_user) %><br>  
-  <%= link_to "Favorites", favorites_path %><br>
   <%= link_to "Log out", logout_path, method: "delete" %>
 </div>
 
@@ -30,14 +28,10 @@
       </div>
     </div>
     <div class="col-sm-4 col-md-offset-2">
-      <div class="complete_order_ history">
+      <div class="complete_order_history">
         <h3>Order History</h3>
         <%@user.name%> 
-
         <% ord = @user.orders.sort {|a,b| b.submit_time <=> a.submit_time} %>
-
-
-
         <% ord.each do |order|%>
           <% if order.complete %>
               <h5><%= order.name %></h5>
@@ -58,29 +52,13 @@
               <% order.options.each do |option| %>
                 <%= option.name %>
               <%end%>
-
+              <br>
+              Rate : <%= rating_for @user, "order", :star => 5, :enable_half => true, :half_show => true, :cancel => true %>
               <%= form_tag('/menus/order_confirm', method: "post") do %>
               <%= text_field_tag(:reorder,"#{order.id}")  %>
               <%= submit_tag("Order") %>
               <% end %>
             <%end%>
-            
-
-       
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
           <%end%>
         </div>
         <br>
@@ -88,10 +66,7 @@
         <br>
         <div class="incomplete_order_history">  
           <h4>Orders not completed yet</h4>
-          
-
           <% @user.orders.each do |order|%>
-
             <% if order.complete == false %>
               <%= order.name %>
               <% order.catagories.each do |cat| %>
@@ -114,41 +89,24 @@
               <%= text_field_tag(:reorder,"#{order.id}")  %>
               <%= submit_tag("Order") %>
               <%end%>
-
-
-
             <%end%>
-
-      
-
-
-
           <%end%>
       </div>
     </div>
   </div>
 </body>
 
-<script>
 
+  <script>
   $( document ).ready(function(){
-
-
     $('[name="reorder"]').hide()
-
-
     $('.remove').click(function(){
-      
       var restId = this.id
-
       $.post("/johda/remove_favs", { 
         'rest': restId, 
         authenticity_token: $('meta[name=csrf-token]').attr('content') 
-        });
+      });
     })
-
-  });
-  
-
+  });  
 </script>
 

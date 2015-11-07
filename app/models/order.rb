@@ -6,5 +6,6 @@ class Order < ActiveRecord::Base
 	has_many :options
 	belongs_to :user
 	belongs_to :restaurant
+  ratyrate_rateable "order"
 	
 end

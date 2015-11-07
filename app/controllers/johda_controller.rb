@@ -1,9 +1,12 @@
 class JohdaController < ApplicationController
 
 	def search
+		def landing_page
+  		@disable_nav = true
+		end
 	end
 
-	def main
+	def main		
 		if !params['address'].nil?
 			session['last_search'] = params['address']
 		end
@@ -113,11 +116,6 @@ class JohdaController < ApplicationController
 	def remove_favs
 		@user = User.find_by_id(session[:user_id].to_i)
 		@user.favorite_restaurants.destroy(params['rest'].to_i)
-
-
-
 		render nothing: true
-		
 	end
-
 end

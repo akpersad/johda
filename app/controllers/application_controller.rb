@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def check_if_logged_in
     deny_access unless logged_in?
   end
+
+  def disable_nav
+    @disable_nav = true
+  end
 end

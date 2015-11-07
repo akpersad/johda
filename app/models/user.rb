@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
-
+  ratyrate_rateable "order"
+  ratyrate_rater
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   before_save { self.email = email.downcase}
