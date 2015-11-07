@@ -55,6 +55,7 @@ class MenusController < ApplicationController
 
     @order = Order.find_by_id(params['order_id'])
     @order.update(:complete=>1)
+    @order.update(:submit_time=>Time.now.to_i)
     @order.save
     
   end

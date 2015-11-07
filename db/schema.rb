@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20151106160538) do
     t.integer  "user_id"
     t.integer  "restaurant_id"
     t.boolean  "complete"
+    t.integer  "submit_time"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
