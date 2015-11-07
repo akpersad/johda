@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration
     	t.integer :user_id
     	t.integer :restaurant_id
     	t.boolean :complete
+    	t.integer :submit_time
 
       t.timestamps null: false
     end
