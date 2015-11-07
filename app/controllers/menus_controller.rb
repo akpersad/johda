@@ -38,9 +38,13 @@ class MenusController < ApplicationController
 
   def order_confirm
    if !session[:user_id].nil?
-    user = User.find_by_id(session[:user_id])
-    @order = user.orders.last
-    render('order_confirm')
+      if !params['reorder'].nil?
+        @order = Order.find_by_id(params['reorder'].to_i)
+      else
+        user = User.find_by_id(session[:user_id])
+        @order = user.orders.last
+      end
+        render('order_confirm')
   else
     @order = Order.last
     render('order_confirm')
@@ -48,6 +52,7 @@ class MenusController < ApplicationController
   end
 
   def confirm
+
     @order = Order.find_by_id(params['order_id'])
     @order.update(:complete=>1)
     @order.save

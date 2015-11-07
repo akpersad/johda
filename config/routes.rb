@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # get 'users/new'
   post "/order" => "menus#order"
   get 'menus/order_confirm'
+  post 'menus/order_confirm'
   post "/confirm" => "menus#confirm"
 
 

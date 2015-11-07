@@ -54,6 +54,28 @@
                 <%= option.name %>
               <%end%>
             <%end%>
+            
+
+       <%= form_tag('/menus/order_confirm', method: "post") do %>
+       
+       <%= text_field_tag(:reorder,"#{order.id}")  %>
+       
+       <%= submit_tag("Order") %>
+       <% end %>
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
           <%end%>
         </div>
         <br>
@@ -88,6 +110,10 @@
 <script>
 
   $( document ).ready(function(){
+
+
+    $('[name="reorder"]').hide()
+
 
     $('.remove').click(function(){
       
