@@ -2,28 +2,27 @@
 <%= render 'menu' %>
 
 
-  <input id='submit' type="submit" value="Submit">
+  <input id='submit' type="submit" value="Submit" class="btn btn-default">
 <br>
 <br>
 <br>
 <br>
-  <%@comment.comments.each do |comment|%>
-  <%if user = User.find_by_id(comment.user_id)%>
-  <%   user = User.find_by_id(comment.user_id)%>
-  	   Account: <%=user.name%> 
-  <%else%>
-  		<%=@guest%>
-  <%end%>
-  <br>
-  <br>
 
-  title:<%= comment.title%>
-  <br>
-  Comment:<%= comment.comment%>
-  <%end%>
- <br>
+<div class="review">  
+  <div class="col-md-6">
+	  <%@comment.comments.each do |comment|%>
+		  <%if user = User.find_by_id(comment.user_id)%>
+		  <%   user = User.find_by_id(comment.user_id)%>
+		  	  Account: <%=user.name%> 
+		  <%else%>
+		  		<%=@guest%>
+		  <%end%>
+		  <br>
+		  <br>
+		<%end%>
+	</div>
+</div>
 
- 
 
 
 <script>
@@ -133,6 +132,7 @@
 			array.push([class_to_send,name_to_send]);
 		})
 		array.push([$('.rest').attr('class'),$('.rest').text()])
+
 		$.post("/order", { 
 				'choices[]': array, 
 				authenticity_token: $('meta[name=csrf-token]').attr('content') 

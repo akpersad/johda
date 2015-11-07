@@ -1,8 +1,19 @@
+
 <br>
  <%= item['name'] %> <%= check_box item['name'], item['name']+' EXTRA '+item["price"].to_s, class:'itembox' %> <br>
 
-<%= item['description'] %>
-<br>
+<strong><%= item['name'] %></strong> <%= check_box item['name'], item['name']+' EXTRA '+item["price"].to_s, class:'itembox' %> <br>
 
-Price:<%= item["price"] %>
+<i><%= item['description'] %></i>
+<%if item['description'].length != 0%>
+<br>
+<%end%>
+Price: <%= number_to_currency(item["price"]) %>
+
+<hr style="
+    height: 1px;
+    background: lightgray;
+    margin-bottom: 0px;
+    margin-top: 3px;
+">
 

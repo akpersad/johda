@@ -11,5 +11,8 @@ class Comment < ActiveRecord::Base
   #acts_as_voteable
 
   # NOTE: Comments belong to a user
+  # ratyrate_rateable "rating"
+  ratyrate_rater
+
   belongs_to :user
 end

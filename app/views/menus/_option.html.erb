@@ -1,7 +1,10 @@
 <br>
 <%if option.class == Hash%>
-option name: <%= option["name"] %> <%= check_box option["name"], option["name"]+' EXTRA '+option["max_price"].to_s, class:'optionbox' %>
+<%= option["name"] %> <%= check_box option["name"], option["name"]+' EXTRA '+option["max_price"].to_s, class:'optionbox' %><br>
 <%= option["description"]%>
+<%if option["description"].length != 0%>
+<br>
+<%end%>
 <%= "$"+option["max_price"].to_s%>
 <%else%>
 <%= option[0] %>
