@@ -1,9 +1,8 @@
 <br>
-Item: <%= item['name'] %> <%= check_box item['name'], item['name']+' EXTRA '+item["price"].to_s, class:'itembox' %> <br>
+ <%= item['name'] %> <%= check_box item['name'], item['name']+' EXTRA '+item["price"].to_s, class:'itembox' %> <br>
 
 <%= item['description'] %>
 <br>
-<p> min quantity:<%= item["min_qty"] %> <br>
-max quantity:<%= item["max_qty"] %> </p>
+
 Price:<%= item["price"] %>
 
