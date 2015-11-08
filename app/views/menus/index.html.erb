@@ -171,7 +171,9 @@
 			// below is where this should be nested under
 			var currentParent = $('.main-cat'+parentClass).children('center').children('strong').text().trim()
 			var itemName = $(this).parent().children('strong').text()
-			$('[id="'+currentParent+'"]').append('<li id="'+itemName+'">'+itemName+'</li>')
+			var itemPrice = $(this).parent().children('h5').text().trim()
+			
+			$('[id="'+currentParent+'"]').append('<li id="'+itemName+'">'+itemName+' '+itemPrice+'</li>')
 			
 
 		} else {
@@ -186,7 +188,8 @@
 			var currentItemClass = '.'+$(this).parent().parent().parent()[0].classList[1]
 			var currentItem = $('.items'+currentItemClass)
 			var itemToAppend = $(currentItem).children('strong').text()
-			var groupName = $(this).parent('strong').text().trim()		
+			var groupName = $(this).parent('strong').text().trim()
+			
 			$('[id="'+itemToAppend+'"]').append('<ol id="'+groupName+'">'+groupName+'</ol>'   )
 			// debugger
 		} else {
@@ -201,7 +204,8 @@
 			var currentGroup = '.groups'+currentGroupClass
 			var groupToAppend = $(currentGroup).children('center').children('strong').text().trim()
 			var optionName = $(this).parent().children('strong').text().trim()
-			$('[id="'+groupToAppend+'"]').append('<li id="'+optionName+'">'+optionName+'</li>')
+			var optionPrice = $(this).parent().children('h5').text()	
+			$('[id="'+groupToAppend+'"]').append('<li id="'+optionName+'">'+optionName+' '+optionPrice+'</li>')
 
 		} else {
 			var optionName = $(this).parent().children('strong').text().trim()

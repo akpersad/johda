@@ -18,15 +18,22 @@
     <div class="col-sm-4 col-md-offset-2">
       <div class="favorites">
       <h3>Favorites</h3>
+
+
       <% @user.favorite_restaurants.each do |rest| %>
-      <br>
-        <h5><%= rest.restaurant.name %></h5>
-        <img src="<%= rest.restaurant.logo %>">
-        <div class="remove" id="<%=rest.id%>">
-        Remove
+        <div> 
+          <br>
+            <h5><%= rest.restaurant.name %></h5>
+            <img src="<%= rest.restaurant.logo %>">
+            <div class="remove" id="<%=rest.id%>">
+            Remove
+            </div>
+            <br>
         </div>
-        <br>
       <%end%>
+      
+
+
       </div>
     </div>
     <div class="col-sm-4 col-md-offset-2">
@@ -145,6 +152,9 @@
         'rest': restId, 
         authenticity_token: $('meta[name=csrf-token]').attr('content') 
         });
+
+      
+      $(this).parent().fadeOut()
     })
 
   });
