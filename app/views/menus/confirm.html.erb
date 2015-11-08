@@ -22,10 +22,8 @@
 
 
 <% @order.groups.each do |groups| %>
-	<%= groups.name %>-
+	<%= groups.name %><br>
 	<% if groups.price.nil? %>
-		$-
-	<% else %>
 		<%= groups.price%>
 	<%end%>
 <%end%>
