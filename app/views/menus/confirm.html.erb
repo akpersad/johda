@@ -3,59 +3,57 @@
 <h4>Ordered on: <%= Time.now.strftime('%a, %d %b %Y %H:%M:%S %p')%></h4>
 <h3></h3>
 <h4>Your order:</h4>
-<img src="<%= @order.restaurant.logo %>" alt="logo" height="42" width="42">
+
+<h4><img src="<%= @order.restaurant.logo %>" alt="logo" height="42" width="42"><br><%= @order.name %></h4>
 
 <br>
-
-<%= @order.name %>
-
-<br>
+ 
+<% total = [] %>
+<% cart = {} %>
 
 <% @order.catagories.each do |cat| %>
-	<%= cat.title %>
+	<strong><%= cat.title %></strong> <br>
+	<% cart[cat.title] = [] %>
 <%end%>
 
 <br>
-
 
 <% @order.items.each do |item| %>
-	<%= item.name %>- $<%= item.price%>
+	<%= item.name %> $<%= item.price%> <br>
+	<% total << item.price.to_i %>
 <%end%>
 
 <br>
-
-
 
 <% @order.groups.each do |groups| %>
-	<%= groups.name %>-
-	<% if groups.price.nil? %>
-		$-
-	<% else %>
-		<%= groups.price%>
-	<%end%>
+	<%= groups.name %><br>
 <%end%>
 
 <br>
 
-
 <% @order.options.each do |options| %>
-	<%= options.name %>-
+	<%= options.name %>
 	<% if options.price == "0" %>
-		$- <br>
+		$0 <br>
 	<% else %>
 		$<%= options.price%><br>
+		<%total << options.price.to_i %>
 	<%end%>
 <%end%>
 
- <%= form_tag("/menus/comment") do %>
+<br>
+Your Total: $<%= total.inject(:+) %>
+<br><br>
 
-  <%= text_field_tag("title")%>
-  <%= text_field_tag("comment")%>
-  <%=hidden_field_tag :merch_id,"#{@order.restaurant.merchant_id}"%>
+<%= form_tag("/menus/comment") do %>
 
-  <%= submit_tag "comment" %>
+<%= text_field_tag("title")%>
+<%= text_field_tag("comment")%>
+<%=hidden_field_tag :merch_id,"#{@order.restaurant.merchant_id}"%>
 
-  <% end%>
+<%= submit_tag "comment" %>
+
+<% end%>
 
 
 <br>
