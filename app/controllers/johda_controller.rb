@@ -62,6 +62,7 @@ class JohdaController < ApplicationController
 			flash[:danger] = "No results were returned. Please try again."
 			redirect_to ("/")
 		end
+
 	end
 
 	def filter
