@@ -28,6 +28,12 @@
 	</div>
 </div>
 
+<div id='cart'>
+	<h1>cart</h1> <br>
+
+	
+</div>
+
 
 
 <script>
@@ -144,6 +150,28 @@
 				}, function(html) {
 	  		 		location.replace('/menus/order_confirm')
 			});
+	})
+
+	// cart
+
+	$('.catbox').change(function(){
+		if (this.checked){
+			var current = $(this).parent().parent().children().text().trim()
+			$('#cart').append('<ol id="'+ current +'">'+current+'</ol>')
+		} else {		
+			var current = $(this).parent().parent().children().text().trim()
+			$('[id="'+current+'"]').remove()
+		}
+
+	})
+
+	$('.itembox').change(function(){
+		if (this.checked){
+			debugger
+
+		} else {
+
+		}
 	})
 
 });
