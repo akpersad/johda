@@ -16,11 +16,9 @@
 
 <div class="page-container">
   <div class="flex-container">
-  	<a href="/johda/main">
-    	<div class="country netherlands" style= "height:210px; width:650px"><div>Dumbo</a></div></div>
-    d</a>
-    <div class="country belgium"><div>Midtown</div></div>
-    <div class="country france"><div>Flushing</div></div>
+    <div class="country netherlands" style= "height:210px; width:650px"><div>Brooklyn</a></div></div>
+    <div class="country belgium"><div>Manhattan</div></div>
+    <div class="country france"><div>Queens</div></div>
   </div>
 </div>
 
@@ -29,8 +27,32 @@
 </body>
 
 <script>
-	$(".country").click(function() {
-  $(this).toggleClass("active");
-  $(".page-container").toggleClass("opened");
-});
+  $(".country").click(function() {
+    $(this).toggleClass("active");
+    $(".page-container").toggleClass("opened");
+  });
+
+  $(".netherlands").click(function() {
+    $.post("/johda/main", { 
+    address: '25 chapel street brooklyn ny', 
+    authenticity_token: $('meta[name=csrf-token]').attr('content'), function(html) {
+      location.replace('/johda/main')
+    }});
+  });
+
+  $(".belgium").click(function() {
+    $.post("/johda/main", { 
+    address: '11 broadway ny ny', 
+    authenticity_token: $('meta[name=csrf-token]').attr('content'), function(html) {
+      location.replace('/johda/main')
+    }});
+  });
+
+  $(".france").click(function() {
+    $.post("/johda/main", { 
+    address: '35-01 Union St, Flushing, NY 11354', 
+    authenticity_token: $('meta[name=csrf-token]').attr('content'), function(html) {
+      location.replace('/johda/main')
+    }});
+  });
 </script>
