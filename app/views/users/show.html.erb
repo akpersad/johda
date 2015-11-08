@@ -41,8 +41,17 @@
         <h3>Order History</h3>
         <%@user.name%> 
 
-        <% ord = @user.orders.sort {|a,b| b.submit_time <=> a.submit_time} %>
 
+        <% ord = @user.orders.sort do |a,b| %>
+       
+          <% if a.submit_time == nil %>
+            <% a.submit_time = 0%>
+          <%end%>
+          <% if b.submit_time == nil %>
+            <% b.submit_time = 0%>
+          <%end%>
+          <% b.submit_time <=> a.submit_time %>
+        <%end%>
 
 
         <% ord.each do |order|%>
