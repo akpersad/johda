@@ -3,27 +3,22 @@
 <h4>Ordered on: <%= Time.now.strftime('%a, %d %b %Y %H:%M:%S %p')%></h4>
 <h3></h3>
 <h4>Your order:</h4>
-<img src="<%= @order.restaurant.logo %>" alt="logo" height="42" width="42">
 
-<br>
-
-<%= @order.name %>
+<h4><img src="<%= @order.restaurant.logo %>" alt="logo" height="42" width="42"><br><%= @order.name %></h4>
 
 <br>
 
 <% @order.catagories.each do |cat| %>
-	<%= cat.title %>
+	<strong><%= cat.title %></strong>
 <%end%>
 
 <br>
-
 
 <% @order.items.each do |item| %>
-	<%= item.name %>- $<%= item.price%>
+	<%= item.name %>- $<%= item.price%> <br>
 <%end%>
 
 <br>
-
 
 
 <% @order.groups.each do |groups| %>
