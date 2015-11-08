@@ -1,53 +1,30 @@
-
-<img src="<%= @order.restaurant.logo %>" alt="logo" height="42" width="42">
+<center>
+<img src="<%= @order.restaurant.logo %>" alt="logo">
 
 <br>
 
-
+<h1 style="margin-top: 0px; margin-bottom: 0px;">
 <%= @order.name %>
+</h1>
 
-<br>
+<hr>
+  </center>
 
-<% @order.catagories.each do |cat| %>
-<%= cat.title %>
-<%end%>
-
-<br>
-
-
-<% @order.items.each do |item| %>
-<%= item.name %>
-<%end%>
-
-<br>
-
-
-
-<% @order.groups.each do |groups| %>
-<%= groups.name %>
-<%end%>
-
-<br>
-
-
-<% @order.options.each do |options| %>
-<%= options.name %>
-<%end%>
-
-<br>
-
-
- <%= form_tag('/menus/confirm', method: "post") do %>
+<div class="bo" style="width:58%;text-align:right;">
+ <%= form_tag('/menus/confirm', method: "post" ) do %>
       <%= label_tag(:address, "Address:") %>
-       <%= text_field_tag(:address) %>
-       <%= label_tag(:apt, "Apt:") %>
-       <%= text_field_tag(:apt) %>
-       <%= label_tag(:city, "City:") %>
-       <%= text_field_tag(:city) %>
-       <%= label_tag(:state, "State:") %>
-       <%= text_field_tag(:state) %>
-       <%= label_tag(:zipcode, "Zipcode:") %>
-       <%= text_field_tag(:zipcode) %>
-        <%= hidden_field_tag(:order_id, value = "#{@order.id}") %>
+      <%= text_field_tag(:address) %><br>
+      <%= label_tag(:apt, "Apt:") %>
+      <%= text_field_tag(:apt) %><br>
+      <%= label_tag(:city, "City:") %>
+      <%= text_field_tag(:city) %><br>
+      <%= label_tag(:state, "State:") %>
+      <%= text_field_tag(:state) %><br>
+      <%= label_tag(:zipcode, "Zipcode:") %>
+      <%= text_field_tag(:zipcode) %><br>
+      <%= hidden_field_tag(:order_id, value = "#{@order.id}") %><br>
+</div>
+<center>
       <%= submit_tag("Order") %>
     <% end %>
+</center>
