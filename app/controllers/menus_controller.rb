@@ -37,18 +37,18 @@ class MenusController < ApplicationController
   end
 
   def order_confirm
-   if !session[:user_id].nil?
-      if !params['reorder'].nil?
-        @order = Order.find_by_id(params['reorder'].to_i)
-      else
-        user = User.find_by_id(session[:user_id])
-        @order = user.orders.last
-      end
-        render('order_confirm')
-  else
-    @order = Order.last
-    render('order_confirm')
-   end
+     if !session[:user_id].nil?
+        if !params['reorder'].nil?
+          @order = Order.find_by_id(params['reorder'].to_i)
+        else
+          user = User.find_by_id(session[:user_id])
+          @order = user.orders.last
+        end
+          render('order_confirm')
+    else
+      @order = Order.last
+      render('order_confirm')
+     end
   end
 
   def confirm
@@ -98,6 +98,6 @@ class MenusController < ApplicationController
     end
     
     redirect_to('/')  
-end
+  end
 
 end
