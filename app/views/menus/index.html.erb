@@ -29,7 +29,7 @@
 </div>
 
 <div id='cart'>
-	<h1>cart</h1> <br>
+	<h1>cart</h1> <br> <br>
 
 	
 </div>
@@ -157,7 +157,7 @@
 	$('.catbox').change(function(){
 		if (this.checked){
 			var current = $(this).parent().parent().children().text().trim()
-			$('#cart').append('<ol id="'+ current +'">'+current+'</ol>')
+			$('#cart').append('<ol id="'+ current +'"> <strong>'+current+'</strong></ol>')
 		} else {		
 			var current = $(this).parent().parent().children().text().trim()
 			$('[id="'+current+'"]').remove()
@@ -167,9 +167,45 @@
 
 	$('.itembox').change(function(){
 		if (this.checked){
-			debugger
+			var parentClass = '.'+$(this).parent()[0].classList[1]
+			// below is where this should be nested under
+			var currentParent = $('.main-cat'+parentClass).children('center').children('strong').text().trim()
+			var itemName = $(this).parent().children('strong').text()
+			$('[id="'+currentParent+'"]').append('<li id="'+itemName+'">'+itemName+'</li>')
+			
 
 		} else {
+			var itemName = $(this).parent().children('strong').text()
+			$('[id="'+itemName+'"]').remove()
+		}
+	})
+
+
+	$('.groupbox').change(function(){
+		if (this.checked){
+			var currentItemClass = '.'+$(this).parent().parent().parent()[0].classList[1]
+			var currentItem = $('.items'+currentItemClass)
+			var itemToAppend = $(currentItem).children('strong').text()
+			var groupName = $(this).parent('strong').text().trim()		
+			$('[id="'+itemToAppend+'"]').append('<ol id="'+groupName+'">'+groupName+'</ol>'   )
+			// debugger
+		} else {
+			var groupName = $(this).parent('strong').text().trim()
+			$('[id="'+groupName+'"]').remove()
+		}
+	})
+
+	$('.optionbox').change(function(){
+		if (this.checked){
+			var currentGroupClass = '.'+$(this).parent()[0].classList[1]
+			var currentGroup = '.groups'+currentGroupClass
+			var groupToAppend = $(currentGroup).children('center').children('strong').text().trim()
+			var optionName = $(this).parent().children('strong').text().trim()
+			$('[id="'+groupToAppend+'"]').append('<li id="'+optionName+'">'+optionName+'</li>')
+
+		} else {
+			var optionName = $(this).parent().children('strong').text().trim()
+			$('[id="'+optionName+'"]').remove()
 
 		}
 	})
