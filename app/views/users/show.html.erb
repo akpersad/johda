@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 
-<div id="nav", class="sidebar"> 
+<div id="nav", class="sidebar" style="position:absolute;top:20%;"> 
   <%= link_to "Edit Profile", edit_user_path(current_user) %><br> 
   <%= link_to "Log out", logout_path, method: "delete" %>
 </div>
@@ -19,21 +19,32 @@
 
 
       <% @user.favorite_restaurants.each do |rest| %>
-        <div> 
+        <div style="
+    height: 137px;
+"> 
           <br>
-            <h5><%= rest.restaurant.name %></h5>
-            <img src="<%= rest.restaurant.logo %>">
+            <h5 style="font-weight:bold;"><%= rest.restaurant.name %></h5>
+            <img src="<%= rest.restaurant.logo %>" style="border-style:solid;border-width: 1px;border-radius:50%;">
 
             <br>
+            <br>
+            <div style="
+    position: relative;
+    bottom: 95px;
+    left: 40%;
+">
             <%= form_tag("../menus/index") do %>
             <%= text_field_tag("#{rest.restaurant.merchant_id}")%>
             <%= submit_tag "Menu" %>
+            </div>
+            <div class="remove" id="<%=rest.id%>" style="position: relative;top: -68%;left: 40%;">
+            <div class="button">
+            Remove
+            </div>
+            </div>
             <%end%>
 
 
-            <div class="remove" id="<%=rest.id%>">
-            Remove
-            </div>
             <br>
         </div>
       <%end%>
@@ -67,7 +78,7 @@
                 <%= cat.title %>
               <%end%>
             <br>
-              <img src="<%= order.restaurant.logo%>">
+              <img src="<%= order.restaurant.logo%>" style="border-style:solid;border-width: 1px;border-radius:50%;">
             <br>
               <% order.items.each do |item| %>
                 <%= item.name %>
@@ -76,34 +87,21 @@
               <% order.groups.each do |group| %>
                 <%= group.name %>
               <%end%>
-            <br>
               <% order.options.each do |option| %>
                 <%= option.name %>
               <%end%>
-
+              
               <%= form_tag('/menus/order_confirm', method: "post") do %>
               <%= text_field_tag(:reorder,"#{order.id}")  %>
               <%= submit_tag("Order") %>
               <% end %>
             <%end%>
-            
 
-       
-
-
-
-       
-
-
-
-
-
-
-
-
+            <br>
 
 
           <%end%>
+          <br>
         </div>
         <br>
         <br>

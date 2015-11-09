@@ -94,7 +94,6 @@
 		    })
     $('.okay').click(function(){
     	
-    	debugger
 		var restId = parseInt($(this).children('div')[1].id)
 		$.post("/johda/save_favs", { 
 				favorite: restId, 
