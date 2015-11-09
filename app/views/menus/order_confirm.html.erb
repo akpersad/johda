@@ -11,6 +11,7 @@
   </center>
 
 <div class="bo" style="width:58%;text-align:right;">
+<strong>Please Enter Your Address:</strong>
  <%= form_tag('/menus/confirm', method: "post" ) do %>
       <%= label_tag(:address, "Address:") %>
       <%= text_field_tag(:address) %><br>
@@ -32,11 +33,12 @@
 
 <!--  -->
 
+<div class="order" style="position: absolute;top: 37%;">
 <% total = [] %>
 <% cart = {} %>
 <strong>
 <% @order.items.each do |item| %>
-  <%= item.name %> $<%= item.price%> <br>
+  <%= item.name %> <%= number_to_currency(item.price)%> <br>
   <% total << item.price.to_f %>
 <%end%>
 </strong>
@@ -52,7 +54,7 @@
   <% if options.price == "0" %>
     $0 <br>
   <% else %>
-    $<%= options.price%><br>
+    <%= number_to_currency(options.price)%><br>
     <%total << options.price.to_f %>
   <%end%>
 <%end%>
@@ -62,4 +64,5 @@
 Your Total: <%= number_to_currency(total.inject(:+)) %>
 </strong>
 <br><br>
+
 </div>
