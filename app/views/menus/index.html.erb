@@ -12,15 +12,15 @@
 	  <%@comment.comments.each do |comment|%>
 		  <%if user = User.find_by_id(comment.user_id)%>
 		  <%   user = User.find_by_id(comment.user_id)%>
-		  	  Account: <%=user.name%> 
+		  	<strong><%= comment.title.titleize %></strong>
+		  	<br>
+		  	  	<u><%=user.name%></u> said,
 		  <%else%>
-		  		<%=@guest%>
+		  		<strong><%=@guest%></strong>
 		  <%end%>
 		  	<br>
-		  	<%= comment.title %>
-		  	<br>
 		  	
-		  	<%= comment.comment %>
+		  	<i>"<%= comment.comment %>"</i>
 		  <br>
 		  <br>
 		<%end%>

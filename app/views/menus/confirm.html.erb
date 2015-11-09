@@ -59,12 +59,12 @@ Your Total: <%= number_to_currency(total.inject(:+)) %>
     top: 50%;
     left: 68%;
 ">
-<h4>Would you like to leave a review for <%=@order.name%>?</h4>
+<h4>Please leave a review for <%=@order.name%>?</h4>
 
 <%= form_tag("/menus/comment") do %>
 
-<%= text_field_tag("title")%><br>
-<%= text_field_tag("comment")%>
+Title:<br> <%= text_field_tag("title")%><br>
+Review:<br><%= text_field_tag("comment")%><br><br>
 <%=hidden_field_tag :merch_id,"#{@order.restaurant.merchant_id}"%>
 
 <%= submit_tag "comment" %>
