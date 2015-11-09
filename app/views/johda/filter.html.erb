@@ -1,21 +1,25 @@
 <center>
 <%if params["page"].nil?%>
-	<h4>1 - 8 of <%=session["results"].name.length%> Restaurants delivering to</h4>
-	<h4><strong><%= session["results"].search_address %></strong></h4>
+	<h4>1 - 8 of <%=session['results'].name.length%> Restaurants delivering to</h4>
+	<h4><strong><%= session['results'].search_address %></strong></h4>
 	<br/>
 <%else%>
-	<h4><%=(params["page"].to_i * 4) + 1%> - <%=(params["page"].to_i * 8)%> of <%=session["results"].name.length%> Restaurants delivering to</h4>
-	<h4><strong><%= session["results"].search_address %></strong></h4>
+	<h4><%=(params["page"].to_i * 4) + 1%> - <%=(params["page"].to_i * 8)%> of <%=session['results'].name.length%> Restaurants delivering to</h4>
+	<h4><strong><%= session['results'].search_address %></strong></h4>
 <%end%>
 
 </center>
 	<% @page.each do |e| %>
-		<div id="<%= e.merchant_id %>" >
+		<div class="restaurants" id="<%= e.merchant_id %>" >
 			 <%= form_tag("../menus/index") do %>
 			<ul class="flex-container2">
 							
 			  <li class="flex-item_rest">
-				<img src="<%= e.logo %>" width="80px" />
+				<img src="<%= e.logo %>" width="80px" style="
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50%;
+"/>
 			  </li>
 							
 			  <li class="flex-item_rest" >
@@ -29,11 +33,13 @@
 			  </li>
 
 			  <li class="flex-item_rest">
-				Cuisine: <%= e.cuisine[1...-1] %><br>
+				<strong>Cuisine: </strong><br>
+				<%= e.cuisine[1...-1] %><br>
 			  </li>
 							
 			  <li class="flex-item_rest">
-				Est. Delivery: <%= e.time_needed %><br>
+				<strong>Est. Delivery: </strong>
+				<br><%= e.time_needed %><br>
 			  </li>
 
 			  <li class="flex-item_rest">
@@ -44,8 +50,9 @@
 			  <li class="flex-item_rest" >
 				<%= text_field_tag("#{e.merchant_id}")%>
 				<%= submit_tag "Menu" %>
-				<div class="okay">
-					Add to Favorites
+				<div class="okay" style="width: 15px;position: absolute;left: 92%;border-top-width: 10px;margin-top: 10px;">
+					<div id="heart" style="margin-top: 0px;margin-bottom: 0px;margin-right: 0px;margin-left: 0px;
+"><div class="k"></div></div>
 					<div id="<%=e.id%>"> </div>
 				</div>
 			  </li>
@@ -69,18 +76,13 @@
 	</div>
 	<%= form_tag("/johda/filter") do %>
 	<div class="cuisine">
-		<% session["cuisine"].each_with_index do |e,i| %>
+		<% session['cuisine'].each_with_index do |e,i| %>
 			<%= e %>  <input type="checkbox" name="cuisine <%=i%>" value="<%= e %>"><br>
 		<% end %>
 		<br/>
 		<%= submit_tag "Filter" %>
 	</div>
 	<% end %>
-		<div class="no_filter">
-		<%= form_tag("/johda/main") do %>
-			<%= submit_tag "No Filter" %>
-		<%end%>
-		</div>
 
 <script>
 	$( document ).ready(function() {
@@ -92,10 +94,10 @@
 		var restId = parseInt($(this).children()[0].id)
 		$.post("/johda/save_favs", { 
 				favorite: restId, 
-				authenticity_token: $('meta[name=csrf-token]').attr('content') 
+				authenticity_token: $('meta[name=csrf-token]').attr('content')
 				});
-		alert("Save");
-		$
+		$(this).fadeOut()
+		
 	});
 	})
 </script>

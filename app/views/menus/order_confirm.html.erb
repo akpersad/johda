@@ -28,3 +28,38 @@
       <%= submit_tag("Order") %>
     <% end %>
 </center>
+
+
+<!--  -->
+
+<% total = [] %>
+<% cart = {} %>
+<strong>
+<% @order.items.each do |item| %>
+  <%= item.name %> $<%= item.price%> <br>
+  <% total << item.price.to_f %>
+<%end%>
+</strong>
+
+<i>
+<% @order.groups.each do |groups| %>
+  <%= groups.name %><br>
+<%end%>
+
+
+<% @order.options.each do |options| %>
+  <%= options.name %>
+  <% if options.price == "0" %>
+    $0 <br>
+  <% else %>
+    $<%= options.price%><br>
+    <%total << options.price.to_f %>
+  <%end%>
+<%end%>
+</i>
+<br>
+<strong>
+Your Total: <%= number_to_currency(total.inject(:+)) %>
+</strong>
+<br><br>
+</div>
