@@ -1,9 +1,7 @@
 <% provide(:title, @user.name) %>
 
-<div id="nav", class="sidebar">
-  <%= link_to "Profile", current_user %><br>  
-  <%= link_to "Edit Profile", edit_user_path(current_user) %><br>  
-  <%= link_to "Favorites", favorites_path %><br>
+<div id="nav", class="sidebar"> 
+  <%= link_to "Edit Profile", edit_user_path(current_user) %><br> 
   <%= link_to "Log out", logout_path, method: "delete" %>
 </div>
 
