@@ -1,35 +1,40 @@
+<center>
 <h1>Thank You for Ordering!<h1>
-<h2>Your order will be processed and will be delivered later</h2>
-<h4>Ordered on: <%= Time.now.strftime('%a, %d %b %Y %H:%M:%S %p')%></h4>
+<h2>Your order will be processed and will be delivered...eventually.</h2>
+<h4>Ordered on: <%= Time.now.strftime('%a, %b %d, %Y %I:%M %p')%></h4>
 <h3></h3>
 <h4>Your order:</h4>
+</center>
 
-<h4><img src="<%= @order.restaurant.logo %>" alt="logo" height="42" width="42"><br><%= @order.name %></h4>
+<img src="<%= @order.restaurant.logo %>" alt="logo" style="
+    position: absolute;
+    left: 47%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50%;
+"><br>
 
-<br>
- 
+<div class="total" style="
+    position: absolute;
+    top: 50%;
+    left: 15%;
+">
+<h4><%= @order.name %></h4>
+
 <% total = [] %>
 <% cart = {} %>
-
-<% @order.catagories.each do |cat| %>
-	<strong><%= cat.title %></strong> <br>
-	<% cart[cat.title] = [] %>
-<%end%>
-
-<br>
-
+<strong>
 <% @order.items.each do |item| %>
 	<%= item.name %> $<%= item.price%> <br>
 	<% total << item.price.to_i %>
 <%end%>
+</strong>
 
-<br>
-
+<i>
 <% @order.groups.each do |groups| %>
 	<%= groups.name %><br>
 <%end%>
 
-<br>
 
 <% @order.options.each do |options| %>
 	<%= options.name %>
@@ -40,20 +45,37 @@
 		<%total << options.price.to_i %>
 	<%end%>
 <%end%>
-
+</i>
 <br>
-Your Total: $<%= total.inject(:+) %>
+<strong>
+Your Total: <%= number_to_currency(total.inject(:+)) %>
+</strong>
 <br><br>
+</div>
+
+
+<div class="review" style="
+    position: absolute;
+    top: 50%;
+    left: 68%;
+">
+<h4>Would you like to leave a review for <%=@order.name%>?</h4>
 
 <%= form_tag("/menus/comment") do %>
 
-<%= text_field_tag("title")%>
+<%= text_field_tag("title")%><br>
 <%= text_field_tag("comment")%>
 <%=hidden_field_tag :merch_id,"#{@order.restaurant.merchant_id}"%>
 
 <%= submit_tag "comment" %>
 
 <% end%>
+</div>
 
 
-<br>
+<img src="http://www.glamour.com/images/entertainment/2013/05/beyonce-baby-main.gif" style="
+    width: 319px;
+    position: absolute;
+    top: 59%;
+    left: 38%;
+"/>
