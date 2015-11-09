@@ -20,6 +20,7 @@ class Menu
 	end
 
 	def build_catagories
+		
 		entire_menu['menu'].each do |menu|
 			catagories << {'name' => menu['name'],
 			'description' => menu['description']}

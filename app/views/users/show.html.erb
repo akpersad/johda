@@ -25,6 +25,14 @@
           <br>
             <h5><%= rest.restaurant.name %></h5>
             <img src="<%= rest.restaurant.logo %>">
+
+            <br>
+            <%= form_tag("../menus/index") do %>
+            <%= text_field_tag("#{rest.restaurant.merchant_id}")%>
+            <%= submit_tag "Menu" %>
+            <%end%>
+
+
             <div class="remove" id="<%=rest.id%>">
             Remove
             </div>
@@ -148,6 +156,8 @@
 <script>
 
   $( document ).ready(function(){
+
+    $('[type="text"]').hide()
 
 
     $('[name="reorder"]').hide()

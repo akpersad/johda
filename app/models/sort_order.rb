@@ -44,7 +44,7 @@ class SortOrder
 
 	def saveOrder
 		iterateOrder
-		if user_id > 0		
+		if user_id > 0
 			restaurant = Restaurant.find_by_merchant_id(@merch_id)
 			user = User.find_by_id(user_id)
 			new_order = Order.create(:name=>restaurant.name,:user_id=>user.id,:restaurant_id=>restaurant.id,:complete=>0)
