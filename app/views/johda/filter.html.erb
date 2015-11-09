@@ -45,7 +45,7 @@
 				<%= text_field_tag("#{e.merchant_id}")%>
 				<%= submit_tag "Menu" %>
 				<div class="okay">
-					Add to Favorites
+					&#x2665
 					<div id="<%=e.id%>"> </div>
 				</div>
 			  </li>
@@ -74,13 +74,13 @@
 		<% end %>
 		<br/>
 		<%= submit_tag "Filter" %>
-	</div>
 	<% end %>
-		<div class="no_filter" style="position:absolute;top: 97%;left: 3%;">
+		<div class="no_filter" >
 		<%= form_tag("/johda/main") do %>
 			<%= submit_tag "No Filter" %>
 		<%end%>
 		</div>
+	</div>
 
 <script>
 	$( document ).ready(function() {
