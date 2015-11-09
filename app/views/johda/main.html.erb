@@ -53,7 +53,9 @@
 				<div class="okay" style="width: 15px;position: absolute;left: 92%;border-top-width: 10px;margin-top: 10px;">
 					<div id="heart" style="margin-top: 0px;margin-bottom: 0px;margin-right: 0px;margin-left: 0px;
 "><div class="k"></div></div>
-<div id="<%=e.id%>"> </div>
+
+	<div id="<%=e.id%>"> </div>
+
 				</div>
 			  </li>
 
@@ -92,11 +94,16 @@
 		    })
     $('.okay').click(function(){
     	
+    	debugger
 		var restId = parseInt($(this).children('div')[1].id)
 		$.post("/johda/save_favs", { 
 				favorite: restId, 
 				authenticity_token: $('meta[name=csrf-token]').attr('content')
 				});
+<<<<<<< HEAD
+=======
+
+>>>>>>> d3a9578f50fb006732a317d37d2a3212320c72a6
 		$(this).fadeOut()
 	});
 	})
