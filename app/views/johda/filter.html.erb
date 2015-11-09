@@ -96,7 +96,7 @@
 		    	$(".cuisine").toggle()
 		    })
     $('.okay').click(function(){
-		var restId = parseInt($(this).children()[0].id)
+		var restId = parseInt($(this).children('div')[1].id)
 		$.post("/johda/save_favs", { 
 				favorite: restId, 
 				authenticity_token: $('meta[name=csrf-token]').attr('content')
