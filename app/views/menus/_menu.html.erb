@@ -1,23 +1,23 @@
 		<div id="top">
 
 	<% @menu.catagories.each_with_index do |catagory,x| %>
-		<div class='main-cat c-<%=x%>' style="background:#d6d6d6;margin-bottom:3px;border-style: solid;border-width: 1px;border-color: gray;"> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
+		<div class='main-cat c-<%=x%>' style="background:#d6d6d6;margin-bottom:3px;border-style: solid;border-width: 1px;border-color: gray;width:86%;"> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
 
 
 		<% @menu.items[x].each_with_index do |item,y| %>	
 
-			<div class='items c-<%=x%> c-<%=x%>-i-<%=y%>' style="text-align: center; display: block;padding-top: 8px;"> <%= render partial: 'item', locals: {item: item} %> </div>
+			<div class='items c-<%=x%> c-<%=x%>-i-<%=y%>' style="text-align: center; display: block;padding-top: 8px;width:86%;"> <%= render partial: 'item', locals: {item: item} %> </div>
 
 
 			<% @menu.groups[x][y].each_with_index do |group,z| %>
 
-				<div class='groups c-<%=x%>-i-<%=y%> c-<%=x%>-i-<%=y%>-g-<%=z%>' style="background:#D3D3D3;margin-bottom:3px;text-align:center;"> <%= render partial: 'group', locals: {group: group} %> </div> 
+				<div class='groups c-<%=x%>-i-<%=y%> c-<%=x%>-i-<%=y%>-g-<%=z%>' style="background:#D3D3D3;margin-bottom:3px;text-align:center;width:86%;"> <%= render partial: 'group', locals: {group: group} %> </div> 
 
 
 				<% if group.class != String%>
 
 					<% @menu.options[x][y][z].each_with_index do |option,d| %>
-						<div class="options c-<%=x%>-i-<%=y%>-g-<%=z%> " style="background:#f7f7f7;text-align:center;"> <%= render partial: 'option', locals: {option: option} %> </div>
+						<div class="options c-<%=x%>-i-<%=y%>-g-<%=z%> " style="background:#f7f7f7;text-align:center;width:86%;"> <%= render partial: 'option', locals: {option: option} %> </div>
 					<% end %>
 				<%end%>
 			<%end%>

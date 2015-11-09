@@ -2,7 +2,6 @@
 <%= render 'menu' %>
 
 
-  <input id='submit' type="submit" value="Submit" class="btn btn-default">
 <br>
 <br>
 <br>
@@ -28,9 +27,21 @@
 	</div>
 </div>
 
-<div id='cart'>
-	<h1>cart</h1> <br> <br>
+<div id='cart' style="
+    position: fixed;
+    top: 12%;
+    right: 1%;
+    width: 187px;
+    border-style: solid;
+    border-width: 1px;
+    padding-right: 1px;
+">
+	<h1>Cart</h1> <br> <br>
 
+  <input id='submit' type="submit" value="Submit" class="btn btn-default" style="
+    margin-bottom: 10px;
+">
+  <br>
 	
 </div>
 
@@ -142,7 +153,6 @@
 
 			array.push([class_to_send,name_to_send]);
 		})
-		debugger
 		array.push([$('.rest').attr('class'),$('.rest').text()])
 
 		$.post("/order", { 
@@ -192,7 +202,6 @@
 			var groupName = $(this).parent('strong').text().trim()
 			
 			$('[id="'+itemToAppend+'"]').append('<ol id="'+groupName+'">'+groupName+'</ol>'   )
-			// debugger
 		} else {
 			var groupName = $(this).parent('strong').text().trim()
 			$('[id="'+groupName+'"]').remove()
