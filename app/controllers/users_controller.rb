@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Johda!"
-      redirect_to @user
+      redirect_to '/'
     else
       render 'new'
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Your profile has been updated."
-      redirect_to @user
+      redirect_to '/'
     else
       render 'edit'
     end
@@ -63,6 +63,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    flash[:success] = "Welcome to Johda"
+    redirect_to(root_url) 
   end
 end
