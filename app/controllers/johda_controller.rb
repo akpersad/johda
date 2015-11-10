@@ -98,7 +98,6 @@ class JohdaController < ApplicationController
 			end
 			array
 		end
-
 		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 	end
 
@@ -117,10 +116,7 @@ class JohdaController < ApplicationController
 		@user = User.find_by_id(session[:user_id].to_i)
 		@user.favorite_restaurants.destroy(params['rest'].to_i)
 
-
-
 		render nothing: true
 		
 	end
-
 end
