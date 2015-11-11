@@ -1,4 +1,4 @@
-                                      source 'https://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'ratyrate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -39,6 +39,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-delivery-food'
 gem 'omniauth-twitter'
+gem 'bcrypt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,10 +53,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
-  #bcrypt, for password security
-  gem 'bcrypt'
-
 
 
 group :test, :development do
