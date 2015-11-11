@@ -1,3 +1,4 @@
+
 #!/usr/bin/env ruby
 io = IO.popen("git remote -v")
 log = io.readlines
