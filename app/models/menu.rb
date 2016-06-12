@@ -4,7 +4,7 @@ require 'pry'
 class Menu
 
 
-	attr_reader :entire_menu, :catagories, :items, :groups, :options
+	attr_reader :entire_menu, :categories, :items, :groups, :options
 	#63183 63341
 	def initialize(restID = 63341)
 		# Delivery api stuff
@@ -12,7 +12,7 @@ class Menu
 		data = Delivery::Client.new "#{key}"
 		@entire_menu = data.menu(restID)
 		# Menu information
-		@catagories = Array.new
+		@categories = Array.new
 		@items = Array.new
 		@groups = Array.new
 		@options = Array.new
@@ -22,7 +22,7 @@ class Menu
 	def build_catagories
 		
 		entire_menu['menu'].each do |menu|
-			catagories << {'name' => menu['name'],
+			categories << {'name' => menu['name'],
 			'description' => menu['description']}
 		end
 	end
@@ -99,7 +99,7 @@ class Menu
 	end
 
 	def runner
-		#catagories[0] returns first title in submenu
+		#categories[0] returns first title in submenu
 
 		#items[0] refers to first title in submenu and returns array of all its items
 		#items[0][0] is the first individual item in that submenu

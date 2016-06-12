@@ -74,7 +74,7 @@
         <% ord.each do |order|%>
           <% if order.complete %>
             <%= order.name %>
-              <% order.catagories.each do |cat| %>
+              <% order.categories.each do |cat| %>
                 <%= cat.title %>
               <%end%>
             <br>
@@ -114,7 +114,7 @@
 
             <% if order.complete == false %>
               <%= order.name %>
-              <% order.catagories.each do |cat| %>
+              <% order.categories.each do |cat| %>
                 <%= cat.title %>
               <%end%>
               <img src="<%= order.restaurant.logo%>">

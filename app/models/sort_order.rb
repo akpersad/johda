@@ -54,7 +54,7 @@ class SortOrder
 				if array.length > 1
 					#add code just in case price is in here
 				else
-					new_order.order_catagories.create(catagory: Catagory.create(:title => array[0]))
+					new_order.order_catagories.create(category: Category.create(:title => array[0]))
 				end
 			end
 			
@@ -95,7 +95,7 @@ class SortOrder
 				if array.length > 1
 					#add code just in case price is in here
 				else
-					new_order.order_catagories.create(catagory: Catagory.create(:title => array[0]))
+					new_order.order_catagories.create(category: Category.create(:title => array[0]))
 				end
 			end
 			
