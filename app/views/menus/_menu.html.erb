@@ -1,7 +1,7 @@
 		<div id="top">
 
-	<% @menu.catagories.each_with_index do |catagory,x| %>
-		<div class='main-cat c-<%=x%>' style="background:#d6d6d6;margin-bottom:3px;border-style: solid;border-width: 1px;border-color: gray;width:86%;"> <%= render partial: 'catagory', locals: {title: catagory} %> </div>
+	<% @menu.catagories.each_with_index do |category,x| %>
+		<div class='main-cat c-<%=x%>' style="background:#d6d6d6;margin-bottom:3px;border-style: solid;border-width: 1px;border-color: gray;width:86%;"> <%= render partial: 'category', locals: {title: category} %> </div>
 
 
 		<% @menu.items[x].each_with_index do |item,y| %>	

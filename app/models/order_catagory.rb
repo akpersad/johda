@@ -1,4 +1,4 @@
 class OrderCatagory < ActiveRecord::Base
 	belongs_to :order
-	belongs_to :catagory
+	belongs_to :category
 end
