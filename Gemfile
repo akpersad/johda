@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'ratyrate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
