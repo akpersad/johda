@@ -37,21 +37,21 @@ class JohdaController < ApplicationController
 		while i < @results.name.length
 			Restaurant.create(
 				:merchant_id => @results.merchant_id[i],
-				:name => @results.name[i], 
-				:address => @results.address[i], 
-				:cuisine => @results.cuisine[i], 
+				:name => @results.name[i],
+				:address => @results.address[i],
+				:cuisine => @results.cuisine[i],
 				:phone_number => @results.phonenumber[i],
 				:logo => @results.merchant_logo[i],
 				:rating => @results.rating[i],
 				:rating_img => @results.rating_img[i],
 				:price_rating => @results.price_rating[i],
-				:time_needed => @results.time_needed[i],
+				# :time_needed => @results.time_needed[i],
 				:delivery_charge => @results.delivery_charge[i],
 				:min_order => @results.min_order[i]
 				)
 			i+=1
 		end
-		
+
 		@page = Kaminari.paginate_array(most_recent).page(params[:page]).per(8)
 
 		session["results"] = @results
@@ -68,7 +68,7 @@ class JohdaController < ApplicationController
 	def filter
 		@index = []
 		test = []
-	
+
 
 		 params.keys.collect do |k|
 		 	k.split(" ")
@@ -107,7 +107,7 @@ class JohdaController < ApplicationController
 			restaurant = Restaurant.find_by_id(params['favorite'].to_i)
 			user = User.find_by_id(session[:user_id])
 			user.favorite_restaurants.create(:restaurant => restaurant)
-			
+
 		end
 		render nothing: true
 	end
@@ -117,6 +117,6 @@ class JohdaController < ApplicationController
 		@user.favorite_restaurants.destroy(params['rest'].to_i)
 
 		render nothing: true
-		
+
 	end
 end

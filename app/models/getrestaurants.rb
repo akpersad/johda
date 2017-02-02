@@ -58,9 +58,9 @@ class	Getrestaurants
 		if !@open_rest.nil?
 			@open_rest.each do |address|
 				@addresses.push([
-				address["location"]["street"].titleize, 
-				address["location"]["city"].titleize, 
-				address["location"]["state"].upcase, 
+				address["location"]["street"].titleize,
+				address["location"]["city"].titleize,
+				address["location"]["state"].upcase,
 				address["location"]["zip"]].join(", "))
 			end
 		end
@@ -94,7 +94,7 @@ class	Getrestaurants
 				if x["ordering"]["delivery_charge"] == 0
 					 @delivery_charge << x["ordering"]["delivery_percent"]
 				else
-					@delivery_charge << x["ordering"]["delivery_charge"]	
+					@delivery_charge << x["ordering"]["delivery_charge"]
 				end
 			end
 		end
@@ -190,24 +190,24 @@ class	Getrestaurants
 		@min_order
 	end
 
-	def time_needed
-		@time_needed = Array.new
-		if !@open_rest.nil?
-			@open_rest.each do |x|
-				@time_needed << x["ordering"]["time_needed"]
-			end
-		end
-		@time_needed.map! do |minutes|
-			if minutes == 0
-				"N/A"
-			elsif minutes % 60 == 0
-				"#{minutes/60} hour(s)"
-			elsif minutes/60 == 0
-					"#{minutes%60} minutes"
-			else
-				"#{minutes/60} hours(s) and #{minutes%60} minutes"
-			end
-		end
-		@time_needed
-	end
+	# def time_needed
+	# 	@time_needed = Array.new
+	# 	if !@open_rest.nil?
+	# 		@open_rest.each do |x|
+	# 			@time_needed << x["ordering"]["time_needed"]
+	# 		end
+	# 	end
+	# 	@time_needed.map! do |minutes|
+	# 		if minutes == 0 || minutes == ""
+	# 			"N/A"
+	# 		elsif minutes % 60 == 0
+	# 			"#{minutes/60} hour(s)"
+	# 		elsif minutes/60 == 0
+	# 				"#{minutes%60} minutes"
+	# 		else
+	# 			"#{minutes/60} hours(s) and #{minutes%60} minutes"
+	# 		end
+	# 	end
+	# 	@time_needed
+	# end
 end
