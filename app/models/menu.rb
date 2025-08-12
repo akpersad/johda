@@ -4,7 +4,8 @@ require 'pry'
 class Menu
 
 
-	attr_reader :entire_menu, :categories, :items, :groups, :options
+    attr_reader :entire_menu, :categories, :items, :groups, :options
+    alias_method :catagories, :categories
 	#63183 63341
 	def initialize(restID = 63341)
 		# Delivery api stuff
@@ -19,7 +20,7 @@ class Menu
 
 	end
 
-	def build_catagories
+    def build_categories
 		
 		entire_menu['menu'].each do |menu|
 			categories << {'name' => menu['name'],
@@ -27,7 +28,7 @@ class Menu
 		end
 	end
 
-	def build_items_for_each_catagory
+    def build_items_for_each_category
 		entire_menu['menu'].each do |menu|
 			items_container = Array.new
 			menu['children'].each do |item|
@@ -113,8 +114,8 @@ class Menu
 		#options[0][0] the second 0 refers to each item in a submenu
 		#options[0][0][0] the third 0 refers to the group 
 		#options[0][0][0][0] the last 0 refers to the option in that group
-		build_catagories
-		build_items_for_each_catagory
+        build_categories
+        build_items_for_each_category
 		build_groups_for_each_item
 		build_options_for_each_group
 		
