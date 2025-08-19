@@ -1,0 +1,11 @@
+log
+tmp
+node_modules
+vendor/bundle
+.bundle
+.git
+public/assets
+coverage
+*.sqlite3
+.DS_Store
+

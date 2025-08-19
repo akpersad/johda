@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'ratyrate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,7 +32,8 @@ gem "figaro"
 #
 gem 'acts_as_commentable'
 
-gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+# Pin to rubygems to avoid git:// protocol issues on modern networks
+gem 'activerecord-session_store', '0.1.2'
 
 #User
 gem 'devise'
@@ -77,4 +78,4 @@ group :production do
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
-ruby "2.2.0"
+ruby ">= 2.2.0", "< 2.4"

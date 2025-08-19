@@ -1,11 +1,11 @@
 class SortOrder
 
-	attr_accessor :catagories, :items, :groups, :options
+	attr_accessor :categories, :items, :groups, :options
 	attr_reader :order, :user_id
 
 	def initialize(array,user_id=0)
 		@order = array
-		@catagories = Array.new
+		@categories = Array.new
 		@items = Array.new
 		@groups = Array.new
 		@options = Array.new
@@ -15,7 +15,7 @@ class SortOrder
 	def split_into_class_array(string)
     	array = string.split(',')
     	if array[0] == 'catbox'
-    		catagories << fix_order(array[1])
+    		categories << fix_order(array[1])
     	elsif array[0] == 'itembox'
     		items << fix_order(array[1])
     	elsif array[0] == 'groupbox'
@@ -32,7 +32,7 @@ class SortOrder
     	length = order.length - 1
     	while length < order.length
     		order.each do |string|
-    			split_into_class_array(string)
+            split_into_class_array(string)
     		end
     		length +=1
     	end	
@@ -50,7 +50,7 @@ class SortOrder
 			new_order = Order.create(:name=>restaurant.name,:user_id=>user.id,:restaurant_id=>restaurant.id,:complete=>0)
 			#
 			cat_array = []
-			catagories.each do |array|
+            categories.each do |array|
 				if array.length > 1
 					#add code just in case price is in here
 				else
@@ -91,7 +91,7 @@ class SortOrder
 			new_order = Order.create(:name=>restaurant.name,:restaurant_id=>restaurant.id,:complete=>0)
 			#
 			cat_array = []
-			catagories.each do |array|
+            categories.each do |array|
 				if array.length > 1
 					#add code just in case price is in here
 				else
